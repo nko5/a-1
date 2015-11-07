@@ -3,10 +3,10 @@ export default ProfileServiceFactory;
 function ProfileServiceFactory($http) {
 
     let service =  {
-        getProfile: getProfile
+        fetch: fetch
     }
 
-    function getProfile() {
+    function fetch() {
         return $http.get('api/profile')
             .then(function(result){
                 return result.data;

@@ -4,6 +4,7 @@ export default function($location, $auth) {
     $auth.authenticate(provider).then(function(){
       goToAgendas();
     });
+    $event.preventDefault();
   };
 
   this.isAuthenticated = function() {

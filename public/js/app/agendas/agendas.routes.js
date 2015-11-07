@@ -1,11 +1,15 @@
-//import HomeController from './home.controller.js';
+import AgendasController from './agendas.controller.js';
+import AgendaController from './agenda.controller.js';
+
 export default function($routeProvider) {
 
     $routeProvider.when('/agendas', {
-        //templateUrl: 'js/app/agendas/agendas.html',
-        template: '<h2>Agendas</h2>'
-        //controller: HomeController,
-        //controllerAs: 'vm'
+        templateUrl: 'js/app/agendas/agendas.html',
+        controller: AgendasController,
+        controllerAs: 'vm',
+        resolve: {
+            agendas: getAgendas
+        }
     });
 
     $routeProvider.when('/agendas/new', {
@@ -15,10 +19,21 @@ export default function($routeProvider) {
     });
 
     $routeProvider.when('/agendas/:id', {
-        //templateUrl: 'js/app/agendas/agenda.html',
-        template: '<h2>My Plan for [date]</h2>'
-        //controller: HomeController,
-        //controllerAs: 'vm'
+        templateUrl: 'js/app/agendas/agenda.html',
+        controller: AgendaController,
+        controllerAs: 'vm',
+        resolve: {
+            agenda: getAgenda
+        }
     });
+
+    function getAgendas(agendasService){
+        return agendasService.fetch();
+    }
+
+    function getAgenda($route, agendasService) {
+        let id = $route.current.params.id;
+        return agendasService.fetch(id);
+    }
 
 }

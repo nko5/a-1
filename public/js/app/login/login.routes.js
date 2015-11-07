@@ -1,7 +1,7 @@
 import LoginController from './login.controller.js';
 
 export default function($routeProvider) {
-    $routeProvider.when('/', {
+    $routeProvider.when('/login', {
         templateUrl: 'js/app/login/login.html',
         controller: LoginController,
         controllerAs: 'vm'
