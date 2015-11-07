@@ -46,5 +46,10 @@
   "npm:satellizer@0.13.0": {},
   "npm:lodash@3.10.1": {
     "process": "github:jspm/nodelibs-process@^0.1.0"
-  }
+  },
+  "github:angular-ui/bootstrap-bower@0.14.3": {},
+  "github:distros/bootstrap-less@3.3.9": {
+    "jquery": "github:components/jquery"
+  },
+  "github:components/jquery@2.1.4": {}
 }

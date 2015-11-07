@@ -29,6 +29,8 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
       "angular-route": "github:angular/bower-angular-route@^1.4.7",
+      "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@^0.14.3",
+      "distros/bootstrap-less": "github:distros/bootstrap-less@^3.3.9",
       "lodash": "npm:lodash@^3.10.1",
       "satellizer": "npm:satellizer@^0.13.0"
     },

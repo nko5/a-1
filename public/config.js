@@ -16,13 +16,18 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.7",
     "angular-route": "github:angular/bower-angular-route@1.4.7",
+    "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.14.3",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",
+    "distros/bootstrap-less": "github:distros/bootstrap-less@3.3.9",
     "lodash": "npm:lodash@3.10.1",
     "satellizer": "npm:satellizer@0.13.0",
     "github:angular/bower-angular-route@1.4.7": {
       "angular": "github:angular/bower-angular@1.4.7"
+    },
+    "github:distros/bootstrap-less@3.3.9": {
+      "jquery": "github:components/jquery@2.1.4"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
