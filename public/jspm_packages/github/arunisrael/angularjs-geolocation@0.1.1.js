@@ -1,0 +1,1 @@
+module.exports = require("github:arunisrael/angularjs-geolocation@0.1.1/src/geolocation");

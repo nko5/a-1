@@ -63,4 +63,3 @@ function AgendasServiceFactory($http, $timeout) {
 
     return service;
 }
-

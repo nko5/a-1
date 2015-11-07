@@ -18,6 +18,7 @@ System.config({
     "angular-route": "github:angular/bower-angular-route@1.4.7",
     "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.14.3",
     "angular/bower-angular-resource": "github:angular/bower-angular-resource@1.4.7",
+    "arunisrael/angularjs-geolocation": "github:arunisrael/angularjs-geolocation@0.1.1",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",

@@ -52,5 +52,6 @@
     "jquery": "github:components/jquery"
   },
   "github:components/jquery@2.1.4": {},
-  "github:angular/bower-angular-resource@1.4.7": {}
+  "github:angular/bower-angular-resource@1.4.7": {},
+  "github:arunisrael/angularjs-geolocation@0.1.1": {}
 }
