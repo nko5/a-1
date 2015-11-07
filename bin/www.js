@@ -3,8 +3,14 @@
 const app = require('../app');
 const db = require('../mongoClient');
 const http = require('http');
+var fs = require('fs');
 
 db.connect(process.env.MONGO_URL);
+
+// Bootstrap mongoose models
+fs.readdirSync('../models').forEach(function (file) {
+    require('../models/' + file);
+});
 
 const port = normalizePort(process.env.PORT || 3000);
 
