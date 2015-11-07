@@ -8,8 +8,8 @@ const agendaSchema = new Schema({
     date: {type: Date},
     startTime: {type: Date},
     endTime: {type: Date},
-    startAddress: {type: Schema.Types.ObjectId, ref: 'Address'},
-    endAddress: {type: Schema.Types.ObjectId, ref: 'Address'},
+    startAddress: {type: String, default: ''},
+    endAddress: {type: String, default: ''},
     tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}]
 });
 
