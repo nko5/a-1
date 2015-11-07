@@ -51,5 +51,6 @@
   "github:distros/bootstrap-less@3.3.9": {
     "jquery": "github:components/jquery"
   },
-  "github:components/jquery@2.1.4": {}
+  "github:components/jquery@2.1.4": {},
+  "github:angular/bower-angular-resource@1.4.7": {}
 }
