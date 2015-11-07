@@ -49,19 +49,7 @@
             <legend>Starting from</legend>
             <div class="form-control">
                 <label for="startFromAddress">Address</label>
-                <input id="startFromAddress" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="startFromCity">City</label>
-                <input id="startFromCity" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="startFromState">State</label>
-                <input id="startFromState" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="startFromZip">ZIP</label>
-                <input id="startFromZip" type="text"/>
+                <input id="startFromAddress" type="text" ng-model="vm.startAddress"/>
             </div>
         </fieldset>
 
@@ -70,18 +58,6 @@
             <div class="form-control">
                 <label for="endAtAddress">Address</label>
                 <input id="endAtAddress" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="endAtCity">City</label>
-                <input id="endAtCity" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="endAtState">State</label>
-                <input id="endAtState" type="text"/>
-            </div>
-            <div class="form-control">
-                <label for="endAtZip">ZIP</label>
-                <input id="endAtZip" type="text"/>
             </div>
         </fieldset>
         <button type="submit">Start Planning</button>
