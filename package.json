@@ -20,6 +20,8 @@
     "postinstall": "node scripts/postinstall.js"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
     "jspm": "^0.16.14"
   },
   "jspm": {
