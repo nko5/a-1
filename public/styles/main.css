@@ -1,11 +1,40 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-body {
+
+html, body {
+  height: 100%;
+}
+.app-wrapper {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px;
+}
+.app-wrapper:after {
+  content: "";
+  display: block;
+}
+.app-footer, .page-wrap:after {
+  height: 50px;
+  padding-top:12px;
+}
+.app-footer {
   text-align: center;
-  overflow: hidden;
+  background: orange;
+}
+
+.app-header {
+  height: 50px;
+  background-color: orange;
+  text-align: center;
+}
+
+.app-header h1 {
+  line-height: 50px;
+  margin: 0;c
 }
 
 .main-content-panel {

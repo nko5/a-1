@@ -5,24 +5,29 @@
   <!--<script type="text/javascript" src="js/pulse.min.js"></script>-->
   <!--<script type="text/javascript" src="js/game.js"></script>-->
 
+  <link rel='stylesheet' type='text/css' href='styles/normalize.css'>
   <link rel='stylesheet' type='text/css' href='styles/main.css'>
 </head>
 <body>
-<header>
-  <div class="main-content-panel">
-    <h1>Plan My Day</h1>
+  <div class="app-wrapper">
+    <header class="app-header">
+      <div class="main-content-panel">
+        <h1>Plan My Day</h1>
+      </div>
+    </header>
+    <main>
+      <div class="main-content-panel">
+        <div ng-view></div>
+
+      </div>
+    </main>
   </div>
-</header>
-<main>
-  <div class="main-content-panel">
-    <div ng-view></div>
-
-  </div>
-</main>
+  <footer class="app-footer">
+    <iframe src="http://nodeknockout.com/iframe/a-1" frameborder=0 scrolling=no allowtransparency=true width=115 height=25>
+    </iframe>
+  </footer>
 
 
-<iframe src="http://nodeknockout.com/iframe/a-1" frameborder=0 scrolling=no allowtransparency=true width=115 height=25>
-</iframe>
 <script src="jspm_packages/system.js"></script>
 <script src="config.js"></script>
 <script>
