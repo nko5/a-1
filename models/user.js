@@ -7,15 +7,13 @@ var userSchema = new Schema({
     google: String,
     firstName: String,
     lastName: String,
-    city: {type: String, default: ''},
-    state: {type: String, default: ''},
-    zipCode: {type: String, default: ''},
+    city: String,
+    state: String,
+    zipCode: String,
     location: {
         type: {type: String},
         coordinates: {type: [Number], index: '2dsphere'}
     }
-
-    //profile: {type: Schema.Types.ObjectId, ref: 'Profile'},
     //tasks: {type: Schema.Types.ObjectId, ref: 'Task'}
 });
 

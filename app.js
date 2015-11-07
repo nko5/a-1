@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var authRoutes = require('./routes/authRoutes');
+var apiRoutes = require('./routes/apiRoutes');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -20,7 +22,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json({
     message: err.message,
     error: {}
   });
