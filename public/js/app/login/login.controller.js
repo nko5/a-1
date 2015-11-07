@@ -4,5 +4,10 @@ export default function($location, $auth) {
     $auth.authenticate(provider);
   };
 
+  this.isAuthenticated = function() {
+    return $auth.isAuthenticated();
+  };
+
+  this.logout = $auth.logout;
 
 }
