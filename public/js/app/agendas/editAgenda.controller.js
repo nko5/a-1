@@ -13,14 +13,6 @@ export default function($location, $routeParams, Agenda) {
     }
   }
 
-  // geolocation.getLocation().then(function(data) {
-  //   vm.currentCoordinates = {
-  //     lat: data.coords.latitude,
-  //     long: data.coords.longitude
-  //   };
-  //   console.log(vm.currentCoordinates);
-  // });
-
   vm.createAgenda = function () {
     console.log('inside save');
     vm.agenda.$save().then(function(success) {
@@ -28,6 +20,11 @@ export default function($location, $routeParams, Agenda) {
     }, function(error) {
       console.log(error);
     });
+  }
+
+  function createTask($event) {
+    $event.preventDefault();
+    $location.path('/agendas/' + agenda.id + '/task');
   }
 
 }
