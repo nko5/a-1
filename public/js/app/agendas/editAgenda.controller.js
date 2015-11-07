@@ -15,7 +15,8 @@ export default function($location, $routeParams, Agenda) {
 
   vm.createAgenda = function () {
     console.log('inside save');
-    vm.agenda.$save().then(function(success) {
+    var Model = $routeParams.agendaId ? vm.agenda.$update() : vm.agenda.$save();
+    Model.then(function(success) {
       console.log(success);
     }, function(error) {
       console.log(error);
