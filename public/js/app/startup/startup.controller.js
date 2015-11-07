@@ -8,6 +8,6 @@ export default function($location, $auth, $timeout) {
             path = '/agendas';
         }
 
-        $location.path('/agendas');
+        $location.path(path);
     }
 }
