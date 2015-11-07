@@ -49,6 +49,7 @@ h6 {
 
 p {
   line-height: 1.4em;
+  margin-bottom: 10px;
 }
 
 a {
@@ -134,6 +135,10 @@ a:visited {
 
 }
 
+.card > p, .card-thick-border > p {
+  margin-bottom: 0;
+}
+
 .card-thick-border {
   border-width: 3px;
 }
@@ -144,4 +149,8 @@ a:visited {
 
 .centered {
   text-align: center;
+}
+
+.muted {
+  color: rgba(0,0,0,0.5);
 }
