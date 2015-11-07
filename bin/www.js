@@ -1,27 +1,11 @@
 "use strict";
-const app = require('../app');
 const db = require('../mongoClient');
+const app = require('../app');
 const http = require('http');
-const fs = require('fs');
-const agendaController = require('../controllers/agendaController');
-const taskController = require('../controllers/taskController');
 
 db.connect(process.env.MONGO_URL);
 
-// Bootstrap mongoose models
-fs.readdirSync(__dirname + '/../models').forEach(function (file) {
-    require('../models/' + file);
-});
-
 const port = normalizePort(process.env.PORT || 3000);
-
-app.set('port', port);
-
-//create routes for agendas
-agendaController(app);
-
-//create routes for tasks
-taskController(app);
 
 const server = http.createServer(app);
 

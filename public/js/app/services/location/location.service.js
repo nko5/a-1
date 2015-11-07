@@ -7,7 +7,7 @@ function LocationServiceFactory($http) {
   }
 
   function getAddressByLatLon(lat, long) {
-    return $http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}`);
+    return $http.get(`/api/location?lat=${lat}&long=${long}`);
   }
 
   return service;
