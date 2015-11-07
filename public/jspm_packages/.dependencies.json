@@ -42,5 +42,6 @@
   "github:angular/bower-angular@1.4.7": {},
   "github:angular/bower-angular-route@1.4.7": {
     "angular": "jspm:angular@^1.3.0"
-  }
+  },
+  "npm:satellizer@0.13.0": {}
 }

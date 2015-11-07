@@ -1,0 +1,1 @@
+module.exports = require("npm:satellizer@0.13.0/satellizer");

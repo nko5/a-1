@@ -21,7 +21,8 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
-      "angular-route": "github:angular/bower-angular-route@^1.4.7"
+      "angular-route": "github:angular/bower-angular-route@^1.4.7",
+      "satellizer": "npm:satellizer@^0.13.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

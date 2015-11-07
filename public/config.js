@@ -19,6 +19,7 @@ System.config({
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",
+    "satellizer": "npm:satellizer@0.13.0",
     "github:angular/bower-angular-route@1.4.7": {
       "angular": "github:angular/bower-angular@1.4.7"
     },

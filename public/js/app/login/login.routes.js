@@ -1,11 +1,11 @@
-//import HomeController from './home.controller.js';
+import LoginController from './login.controller.js';
+
 export default function($routeProvider) {
 
     $routeProvider.when('/', {
-        //templateUrl: 'js/app/home/home.html',
-        template: '<h2>Login</h2>'
-        //controller: HomeController,
-        //controllerAs: 'vm'
+        templateUrl: 'js/app/login/login.html',
+        controller: LoginController,
+        controllerAs: 'vm'
     });
 
     $routeProvider.otherwise({
