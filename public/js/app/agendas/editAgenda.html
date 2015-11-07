@@ -1,8 +1,13 @@
 <div id="editAgenda">
-    <form>
+    <h2>Plan a New Day</h2>
+    <form ng-submit="vm.createAgenda()">
         <div class="form-control">
             <label for="agendaDate">What day would you like to plan?</label>
             <input id="agendaDate" type="date" />
+        </div>
+        <div class="form-control">
+            <label for="agendaDescription">Description (optional)</label>
+            <input id="agendaDescription" type="text" />
         </div>
         <div class="form-control">
             <label for="agendaStartTime">When will you start your day?</label>
@@ -21,8 +26,64 @@
             </select>
         </div>
         <div class="form-control">
-            <label for="agendaStartFrom">Starting from where?</label>
-            <input id="agendaStartFrom" type="text"/>
+            <label for="agendaEndTime">When will you end your day?</label>
+            <select id="agendaEndTime">
+                <option value="1200">12:00PM</option>
+                <option value="1230">12:30PM</option>
+                <option value="1300">1:00PM</option>
+                <option value="1330">1:30PM</option>
+                <option value="1400">2:00PM</option>
+                <option value="1430">2:30PM</option>
+                <option value="1500">3:00PM</option>
+                <option value="1530">3:30PM</option>
+                <option value="1600">4:00PM</option>
+                <option value="1630">4:30PM</option>
+                <option value="1700">5:00PM</option>
+                <option value="1730">5:30PM</option>
+                <option value="1800">6:00PM</option>
+                <option value="1830">6:30PM</option>
+            </select>
         </div>
+
+        <fieldset>
+            <legend>Starting from</legend>
+            <div class="form-control">
+                <label for="startFromAddress">Address</label>
+                <input id="startFromAddress" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="startFromCity">City</label>
+                <input id="startFromCity" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="startFromState">State</label>
+                <input id="startFromState" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="startFromZip">ZIP</label>
+                <input id="startFromZip" type="text"/>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Ending at</legend>
+            <div class="form-control">
+                <label for="endAtAddress">Address</label>
+                <input id="endAtAddress" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="endAtCity">City</label>
+                <input id="endAtCity" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="endAtState">State</label>
+                <input id="endAtState" type="text"/>
+            </div>
+            <div class="form-control">
+                <label for="endAtZip">ZIP</label>
+                <input id="endAtZip" type="text"/>
+            </div>
+        </fieldset>
+        <button type="submit">Start Planning</button>
     </form>
 </div>

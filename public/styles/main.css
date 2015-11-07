@@ -75,7 +75,7 @@ a:visited {
   content: "";
   display: block;
 }
-.app-footer, .page-wrap:after {
+.app-footer, .app-wrapper:after {
   height: 50px;
   padding-top:12px;
 }

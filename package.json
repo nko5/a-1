@@ -29,6 +29,7 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
       "angular-route": "github:angular/bower-angular-route@^1.4.7",
+      "lodash": "npm:lodash@^3.10.1",
       "satellizer": "npm:satellizer@^0.13.0"
     },
     "devDependencies": {

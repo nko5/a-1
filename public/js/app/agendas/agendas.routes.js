@@ -1,5 +1,6 @@
 import AgendasController from './agendas.controller.js';
 import AgendaController from './agenda.controller.js';
+import EditAgendaController from './editAgenda.controller.js';
 
 export default function($routeProvider) {
 
@@ -13,14 +14,26 @@ export default function($routeProvider) {
     });
 
     $routeProvider.when('/agendas/new', {
-        templateUrl: 'js/app/agendas/editAgenda.html'
-        //controller: HomeController,
-        //controllerAs: 'vm'
+        templateUrl: 'js/app/agendas/editAgenda.html',
+        controller: EditAgendaController,
+        controllerAs: 'vm',
+        resolve: {
+            agenda: function() {return false;}
+        }
     });
 
     $routeProvider.when('/agendas/:id', {
         templateUrl: 'js/app/agendas/agenda.html',
         controller: AgendaController,
+        controllerAs: 'vm',
+        resolve: {
+            agenda: getAgenda
+        }
+    });
+
+    $routeProvider.when('/agendas/:id/edit', {
+        templateUrl: 'js/app/agendas/editAgenda.html',
+        controller: EditAgendaController,
         controllerAs: 'vm',
         resolve: {
             agenda: getAgenda

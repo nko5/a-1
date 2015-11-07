@@ -19,6 +19,7 @@ System.config({
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",
+    "lodash": "npm:lodash@3.10.1",
     "satellizer": "npm:satellizer@0.13.0",
     "github:angular/bower-angular-route@1.4.7": {
       "angular": "github:angular/bower-angular@1.4.7"
@@ -49,6 +50,9 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
