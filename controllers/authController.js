@@ -64,7 +64,6 @@ module.exports.authenticateGoogle = function (req, res) {
             headers: headers,
             json: true
         }, function (err, response, profile) {
-
             // Step 3a. Link user accounts.
             if (req.headers.authorization) {
                 User.findOne({
