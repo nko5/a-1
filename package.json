@@ -3,13 +3,17 @@
   "version": "0.0.1",
   "description": "Our soon to be awesome entry for NKO2015. Let's make something amazing.",
   "author": "Node Knockout Team <all@nodeknockout.com>",
-  "main": "./app.js",
+  "main": "./bin/www.js",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
-    "mongoose": "^4.2.4"
+    "jwt-simple": "^0.3.1",
+    "moment": "^2.10.6",
+    "mongoose": "^4.2.4",
+    "request": "^2.65.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./bin/www.js",
     "postinstall": "node scripts/postinstall.js"
   },
   "devDependencies": {
