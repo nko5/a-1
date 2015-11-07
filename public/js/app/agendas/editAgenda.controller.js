@@ -20,12 +20,11 @@ export default function($location, $routeParams, Agenda, geolocation,
   }
 
   vm.createAgenda = function() {
-    console.log('inside save');
     var Model = $routeParams.agendaId ? vm.agenda.$update() : vm.agenda.$save();
     Model.then(function(success) {
-      console.log(success);
+      $location.path('/agendas/');
     }, function(error) {
-      console.log(error);
+      $location.path('/agendas/');
     });
   }
 
