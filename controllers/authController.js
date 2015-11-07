@@ -36,6 +36,7 @@ function createNewUser(signInMethod, profile, res) {
 }
 
 module.exports.authenticateGoogle = function (req, res) {
+
     var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
     var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
 

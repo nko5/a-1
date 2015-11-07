@@ -1,5 +1,8 @@
 var app = require('../app');
+var db = require('../dbConnect');
 var http = require('http');
+
+db.connect(process.env.MONGO_URL);
 
 var port = normalizePort(process.env.PORT || 3000);
 
