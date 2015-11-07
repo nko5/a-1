@@ -50,6 +50,18 @@ module.exports.ensureAuthenticated = function (req, res, next) {
     next();
 };
 
+module.exports.getCurrentUser = function getCurrentUser(req, res) {
+    if (!req.headers.authorization) {
+        return res.status(401).send({message: 'Please make sure your request has an Authorization header'});
+    }
+    var token = req.headers.authorization.split(' ')[1];
+    var payload = jwt.decode(token, config.TOKEN_SECRET);
+    if (payload.exp <= moment().unix()) {
+        return res.status(401).send({message: 'Token has expired'});
+    }
+    return payload.sub;
+};
+
 module.exports.getGoogleAuthToken = function (req, res) {
 
     var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
@@ -124,5 +136,3 @@ module.exports.getGoogleAuthToken = function (req, res) {
         });
     });
 };
-
-

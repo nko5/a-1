@@ -10,7 +10,6 @@ const addressSchema = new Schema({
     state: String,
     zipCode: String,
     location: {
-        type: {type: String},
         coordinates: {type: [Number], index: '2dsphere'}
     }
 });

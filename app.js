@@ -5,6 +5,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const apiRoutes = require('./routes/apiRoutes');
+const agendaController = require('./controllers/agendaController');
+const taskController = require('./controllers/taskController');
 
 const app = express();
 
@@ -15,6 +17,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+
+//create routes for agendas
+agendaController(app);
+
+//create routes for tasks
+taskController(app);
+
 
 app.use(function(req, res, next) {
   let err = new Error('Not Found');

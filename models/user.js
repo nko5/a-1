@@ -10,7 +10,7 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     address: {type: Schema.Types.ObjectId, ref: 'Address'},
-    agendas: {type: Schema.Types.ObjectId, ref: 'Agenda'}
+    agendas: [{type: Schema.Types.ObjectId, ref: 'Agenda'}]
 });
 
 exports = module.exports = mongoose.model('User', userSchema);
