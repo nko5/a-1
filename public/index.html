@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <title>Node Knockout 2015</title>
-  <head>
-    <script type="text/javascript" src="js/pulse.min.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
+<title>Plan My Day | Node Knockout 2015</title>
+<head>
+  <!--<script type="text/javascript" src="js/pulse.min.js"></script>-->
+  <!--<script type="text/javascript" src="js/game.js"></script>-->
 
-    <link rel='stylesheet' type='text/css' href='styles/main.css'>
-  </head>
-  <body>
+  <link rel='stylesheet' type='text/css' href='styles/main.css'>
+</head>
+<body>
+<header>
+  <div class="main-content-panel">
+    <h1>Plan My Day</h1>
+  </div>
+</header>
+<main>
+  <div class="main-content-panel">
+    <div ng-view></div>
 
-    <h2><img src="https://pbs.twimg.com/profile_images/623570379437510656/b0gi4XDH_400x400.png" /> Time to get Started!</h2>
-    <div id="gw"></div>
-  </body>
+  </div>
+</main>
+
+
+<iframe src="http://nodeknockout.com/iframe/a-1" frameborder=0 scrolling=no allowtransparency=true width=115 height=25>
+</iframe>
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>
+  System.import('js/main.js');
+</script>
+</body>
 </html>
