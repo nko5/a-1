@@ -7,7 +7,10 @@ export default function($location, $http, agenda, geolocation, locationService) 
 
     geolocation.getLocation().then(function(data){
       vm.currentCoordinates = {lat:data.coords.latitude, long:data.coords.longitude};
-      console.log(vm.currentCoordinates);
+      locationService.getAddressByLatLon(vm.currentCoordinates.lat,
+      vm.currentCoordinates.long).then(function(data) {
+        console.log(data);
+      });
     });
 
     function createTask($event) {
