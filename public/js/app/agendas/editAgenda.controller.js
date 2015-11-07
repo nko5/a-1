@@ -1,20 +1,33 @@
-export default function($location, $http, agenda, geolocation, locationService) {
-    var vm = this;
+export default function($location, $routeParams, Agenda) {
+  var vm = this;
 
-    vm.agenda = agenda;
+  init();
 
-    vm.createTask = createTask;
-
-    geolocation.getLocation().then(function(data){
-      vm.currentCoordinates = {lat:data.coords.latitude, long:data.coords.longitude};
-      locationService.getAddressByLatLon(vm.currentCoordinates.lat,
-      vm.currentCoordinates.long).then(function(data) {
-        console.log(data);
+  function init() {
+    if($routeParams.agendaId) {
+      Agenda.get({id: $routeParams.agendaId}).$promise.then(function (agenda) {
+        vm.agenda = agenda;
       });
-    });
-
-    function createTask($event) {
-        $event.preventDefault();
-        $location.path('/agendas/' + agenda.id + '/task');
+    } else {
+      vm.agenda = new Agenda();
     }
+  }
+
+  // geolocation.getLocation().then(function(data) {
+  //   vm.currentCoordinates = {
+  //     lat: data.coords.latitude,
+  //     long: data.coords.longitude
+  //   };
+  //   console.log(vm.currentCoordinates);
+  // });
+
+  vm.createAgenda = function () {
+    console.log('inside save');
+    vm.agenda.$save().then(function(success) {
+      console.log(success);
+    }, function(error) {
+      console.log(error);
+    });
+  }
+
 }

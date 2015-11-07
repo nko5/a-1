@@ -7,46 +7,34 @@ export default function($routeProvider) {
     $routeProvider.when('/agendas', {
         templateUrl: 'js/app/agendas/agendas.html',
         controller: AgendasController,
-        controllerAs: 'vm',
-        resolve: {
-            agendas: getAgendas
-        }
+        controllerAs: 'vm'
     });
 
     $routeProvider.when('/agendas/new', {
         templateUrl: 'js/app/agendas/editAgenda.html',
         controller: EditAgendaController,
-        controllerAs: 'vm',
-        resolve: {
-            agenda: function() {return false;}
-        }
+        controllerAs: 'vm'
     });
 
-    $routeProvider.when('/agendas/:id', {
+    $routeProvider.when('/agendas/:agendaId', {
         templateUrl: 'js/app/agendas/agenda.html',
         controller: AgendaController,
-        controllerAs: 'vm',
-        resolve: {
-            agenda: getAgenda
-        }
+        controllerAs: 'vm'
     });
 
-    $routeProvider.when('/agendas/:id/edit', {
+    $routeProvider.when('/agendas/:agendaId/edit', {
         templateUrl: 'js/app/agendas/editAgenda.html',
         controller: EditAgendaController,
-        controllerAs: 'vm',
-        resolve: {
-            agenda: getAgenda
-        }
+        controllerAs: 'vm'
     });
-
-    function getAgendas(agendasService){
-        return agendasService.fetch();
-    }
-
-    function getAgenda($route, agendasService) {
-        let id = $route.current.params.id;
-        return agendasService.fetch(id);
-    }
+    //
+    // function getAgendas(agendasService){
+    //     return agendasService.fetch();
+    // }
+    //
+    // function getAgenda($route, agendasService) {
+    //     let id = $route.current.params.id;
+    //     return agendasService.fetch(id);
+    // }
 
 }

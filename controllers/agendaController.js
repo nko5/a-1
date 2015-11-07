@@ -15,7 +15,7 @@ module.exports = function (app) {
         middlewares: [authController.ensureAuthenticated]
     };
 
-    //config.method = ['GET', 'POST', 'PUT', 'DELETE'];
+    config.method = ['GET', 'POST', 'PUT', 'DELETE'];
     app.use(new Coral(config));
 
 };

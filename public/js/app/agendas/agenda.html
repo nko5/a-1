@@ -1,4 +1,8 @@
 <h2>{{vm.agenda.date | date:'fullDate'}}</h2>
+<p>{{vm.agenda.description}}</p>
+<a ng-href="/#/agendas/{{vm.agenda._id}}/edit">Edit</a>
+
+
 <p><a href="#" ng-click="vm.newTask($event)">Add a task</a></p>
 <ul class="card-list">
     <li ng-repeat="task in vm.agenda.tasks">

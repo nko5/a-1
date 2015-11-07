@@ -3,6 +3,7 @@
         <li class="centered" ng-repeat="agenda in vm.agendas">
             <a class="card-thick-border" href="#" ng-click="vm.goToAgenda(agenda, $event)">
                 <p>{{agenda.date | date:'fullDate'}}</p>
+                <p>{{agenda.description}}</p>
             </a>
         </li>
         <li class="centered">

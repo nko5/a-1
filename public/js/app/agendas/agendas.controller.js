@@ -1,13 +1,12 @@
-export default function($location, agendas) {
+export default function($location, Agenda) {
     var vm = this;
 
-    vm.agendas = agendas;
+    vm.agendas = Agenda.query();
 
     vm.goToAgenda =  getToAgenda;
 
     function getToAgenda(agenda, $event) {
-        $location.path('/agendas/'+agenda.id);
+        $location.path('/agendas/'+agenda._id);
         $event.preventDefault();
     }
 }
-
