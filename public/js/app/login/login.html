@@ -1,7 +1,7 @@
 <div ng-if="!vm.isAuthenticated()">
   <ul>
     <li>
-      <a href="#" ng-click="vm.authenticate('google')">Signin with Google</a>
+      <a href="#" ng-click="vm.authenticate('google', $event)">Signin with Google</a>
     </li>
   </ul>
 </div>

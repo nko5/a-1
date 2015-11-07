@@ -31,21 +31,38 @@ html, body {
 .app-header {
   height: 50px;
   background-color: orange;
-  text-align: center;
+  position: relative;
 }
 
 .app-header h1 {
+  text-align: center;
   line-height: 50px;
   margin: 0;
 }
 
 .app-header .main-content-panel {
-  position: relative;
+  /*position: relative;*/
 }
 .app-header .user-profile {
     position: absolute;
-    top: 0;
-    right:0;
+    top: 50%;
+    right:10px;
+    transform: translateY(-50%);
+
+}
+
+.app-header .user-profile li {
+  float:left;
+  list-style: none;
+  padding: 0 10px;
+  border-right: solid 1px rgba(0,0,0,0.3);
+
+}
+
+
+.app-header .user-profile li:last-child {
+  border-right: 0;
+  padding-right: 0;
 }
 
 .main-content-panel {

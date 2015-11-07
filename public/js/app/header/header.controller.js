@@ -1,5 +1,5 @@
-export default function($scope, $location, $auth) {
-
+export default function($scope, $location, $auth, profileService) {
+    var self = this;
     this.isAuthenticated = function() {
         return $auth.isAuthenticated();
     };
@@ -14,10 +14,13 @@ export default function($scope, $location, $auth) {
 
     function onAuthenticationChange() {
         if ($auth.isAuthenticated()) {
-            console.log("get the user object");
+
+            profileService.getProfile().then(function(profile){
+                self.userProfile = profile;
+            })
         }
         else {
-            console.log("clear the user object");
+            self.userProfile = null;
         }
     }
 

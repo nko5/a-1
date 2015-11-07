@@ -1,6 +1,6 @@
 export default function($location, $auth) {
 
-  this.authenticate = function(provider) {
+  this.authenticate = function(provider, $event) {
     $auth.authenticate(provider).then(function(){
       goToAgendas();
     });
