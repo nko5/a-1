@@ -1,10 +1,12 @@
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
-var authRoutes = require('./routes/authRoutes');
-var apiRoutes = require('./routes/apiRoutes');
+"use strict";
 
-var app = express();
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
+const apiRoutes = require('./routes/apiRoutes');
+
+const app = express();
 
 app.use(bodyParser.json());
 
@@ -15,7 +17,7 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

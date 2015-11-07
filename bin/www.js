@@ -1,14 +1,16 @@
-var app = require('../app');
-var db = require('../dbConnect');
-var http = require('http');
+"use strict";
+
+const app = require('../app');
+const db = require('../mongoClient');
+const http = require('http');
 
 db.connect(process.env.MONGO_URL);
 
-var port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(process.env.PORT || 3000);
 
 app.set('port', port);
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 server.listen(port);
 

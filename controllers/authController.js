@@ -1,3 +1,5 @@
+"use strict";
+
 const request = require('request');
 var User = require('../models/user');
 var jwt = require('jwt-simple');

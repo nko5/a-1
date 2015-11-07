@@ -1,3 +1,5 @@
+"use strict";
+
 var showtimes = require('showtimes');
 
 module.exports.getTheaters = function(req, res) {
