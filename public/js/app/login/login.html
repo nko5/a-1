@@ -1,8 +1,7 @@
-<div style="float:right">
-  <div ng-if="!vm.isAuthenticated()">
-    <a href="#" ng-click="vm.authenticate('google')">Signin with Google</a>
-  </div>
-  <div ng-if="vm.isAuthenticated()">
-    <a href="#" ng-click="vm.logout()">Logout</a>
-  </div>
+<div ng-if="!vm.isAuthenticated()">
+  <ul>
+    <li>
+      <a href="#" ng-click="vm.authenticate('google')">Signin with Google</a>
+    </li>
+  </ul>
 </div>

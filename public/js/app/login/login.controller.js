@@ -1,13 +1,22 @@
 export default function($location, $auth) {
 
   this.authenticate = function(provider) {
-    $auth.authenticate(provider);
+    $auth.authenticate(provider).then(function(){
+      goToAgendas();
+    });
   };
 
   this.isAuthenticated = function() {
     return $auth.isAuthenticated();
   };
 
-  this.logout = $auth.logout;
+  if ($auth.isAuthenticated()) {
+    goToAgendas();
+  }
+
+
+  function goToAgendas() {
+    $location.path('/agendas');
+  }
 
 }
