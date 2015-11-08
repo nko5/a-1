@@ -1,7 +1,7 @@
 <div class="agenda-view-panel">
     <div class="page-title-panel">
         <!--<h2>{{vm.agenda.date | date:'fullDate'}}</h2>-->
-        <h2>Monday, November 9th <small> | <a ng-href="/#/agendas/{{vm.agenda._id}}/edit">edit</a></small></h2>
+        <h2>{{vm.agenda.date | date:'EEEE, MMMM d'}} <small> | <a ng-href="/#/agendas/{{vm.agenda._id}}/edit">edit</a></small></h2>
         <div>
             <span>{{vm.agenda.description}}</span>
         </div>
@@ -15,25 +15,38 @@
         </a>
     </div>
 
-    <div class="agenda-start">
-        <span class="sr-only">Start of the day</span>
-    </div>
-    <p ng-if="!vm.agenda.tasks.length" class="no-content-message centered">Add tasks to your plan by <nobr>pressing the <span class="glyphicon glyphicon-plus"></span><span class="sr-only">plus</span> button above.</nobr></p>
-    <ul class="card-list agenda-plan">
-        <li ng-repeat="task in vm.agenda.tasks">
-            <div ng-if="task.travelDurationPx > 0" class="task-travel" style="height:{{task.travelDurationPx}}px"></div>
-            <a href="#" ng-if="!task.endOfDay" ng-click="vm.editTask($event, task._id)" class="card task-card" ng-class='{"short-duration": task.durationPx<30}'' style="height:{{task.durationPx}}px">
+    <div class="agenda-plan-panel">
+        <div class="agenda-plan-timeline-panel">
+            <div class="agenda-plan-timeline">
+                <div ng-repeat="hr in vm.hours">
+                    <div class="hour">{{hr.value}}</div>
+                    <div class="quarter-hour"></div>
+                    <div class="quarter-hour"></div>
+                    <div class="quarter-hour"></div>
+                    <div class="quarter-hour"></div>
+                </div>
+            </div>
+        </div>
+        <div class="agenda-start">
+            <span class="sr-only">Start of the day</span>
+        </div>
+        <p ng-if="!vm.agenda.tasks.length" class="no-content-message centered">Add tasks to your plan by <nobr>pressing the <span class="glyphicon glyphicon-plus"></span><span class="sr-only">plus</span> button above.</nobr></p>
+        <ul class="card-list agenda-plan">
+            <li ng-repeat="task in vm.agenda.tasks">
+                <div ng-if="task.travelDurationPx > 0" class="task-travel" style="height:{{task.travelDurationPx}}px"></div>
+                <a href="#" ng-if="!task.endOfDay" ng-click="vm.editTask($event, task._id)" class="card task-card" ng-class='{"short-duration": task.durationPx<30}'' style="height:{{task.durationPx}}px">
                 <div class="task-content">
                     <div class="description">{{task.description}}</div>
                     <div class="description2">{{task.location}}</div>
                 </div>
                 <!--<a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>-->
                 <!--<a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>-->
-            </a>
-        </li>
-    </ul>
-    <div class="agenda-end">
-        <span class="sr-only">End of the day</span>
+                </a>
+            </li>
+        </ul>
+        <div class="agenda-end">
+            <span class="sr-only">End of the day</span>
+        </div>
     </div>
 
 </div>

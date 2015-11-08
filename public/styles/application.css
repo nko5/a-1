@@ -6712,8 +6712,31 @@ p {
   color: #777777;
   font-size: 1.333333em;
 }
+.agenda-plan-panel {
+  position: relative;
+}
+.agenda-plan-timeline-panel {
+  position: absolute;
+  top: -10px;
+  bottom: 0;
+  overflow: hidden;
+  width: 40px;
+  color: #777777;
+  font-size: 10px;
+  left: -10px;
+}
+.agenda-plan-timeline .hour {
+  height: 15px;
+  border-bottom: solid 1px #bbbbbb;
+}
+.agenda-plan-timeline .quarter-hour {
+  margin-left: 25px;
+  height: 15px;
+  border-bottom: solid 1px #bbbbbb;
+}
 .agenda-plan {
   margin-bottom: 0;
+  margin-left: 30px;
 }
 .task-card {
   padding-top: 0;
@@ -6744,14 +6767,12 @@ p {
 }
 .task-travel {
   background-color: rgba(255, 153, 0, 0.5);
-  margin: 0 20px;
+  margin: 0 10px;
   min-height: 10px;
 }
 .agenda-start,
 .agenda-end {
   height: 5px;
   background-color: #003E5F;
-}
-.agenda-start {
-  margin-top: -5px;
+  margin-left: 30px;
 }
