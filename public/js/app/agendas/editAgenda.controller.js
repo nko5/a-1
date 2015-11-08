@@ -49,11 +49,11 @@ export default function($location, $routeParams, Agenda, geolocation,
     let displayTime;
     let isoTime;
     _.times(12, function(time) {
-      displayTime = time+':'+'00 AM';
-      isoTime = moment(displayTime, 'HH:mm a').isoTime();
+      displayTime = time+':'+'00AM';
+      isoTime = moment(displayTime, 'HH:mma').toISOString();
       startTimes[isoTime] = displayTime;
-      displayTime = time+':'+'30 AM';
-      isoTime = moment(displayTime, 'HH:mma').isoTime();
+      displayTime = time+':'+'30AM';
+      isoTime = moment(displayTime, 'HH:mma').toISOString();
       startTimes[isoTime] = displayTime;
     });
     return startTimes;
