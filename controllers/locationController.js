@@ -20,10 +20,10 @@ module.exports.getTravelTime = function(req, res) {
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
-    var durationInHours = responseBody.rows[0].elements[0].duration.value / 60 / 60;
+    var durationInMinutes = responseBody.rows[0].elements[0].duration.value / 60;
     return res.json({
       duration: {
-        hours: durationInHours
+        minutes: durationInMinutes
       }
     });
   });
