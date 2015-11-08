@@ -6585,7 +6585,7 @@ p {
 .app-wrapper {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -20px;
+  margin-bottom: -35px;
 }
 .app-wrapper:after {
   content: "";
@@ -6593,12 +6593,12 @@ p {
 }
 .app-footer,
 .app-wrapper:after {
-  height: 20px;
+  height: 35px;
 }
 .app-footer {
   text-align: center;
   background: #003E5F;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 .app-header {
   height: 48px;
@@ -6617,7 +6617,7 @@ p {
 .app-header .user-profile {
   position: absolute;
   top: 50%;
-  right: 125px;
+  right: 20px;
   transform: translateY(-50%);
   font-size: .85em;
 }
