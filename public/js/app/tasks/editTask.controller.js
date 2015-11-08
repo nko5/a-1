@@ -35,7 +35,8 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
 
     if(vm.task.type === 'movie') {
       vm.task.description = `Movie - ${vm.movie.name.name} at ${vm.movie.theater.name}`;
-      vm.task.duration = vm.movie.name.runtime;
+      let runtime = moment(vm.movie.name.runtime, 'HH mm');
+      vm.task.duration = moment.duration(runtime).asMinutes();
       vm.task.location = vm.movie.theater.address;
     }
 
