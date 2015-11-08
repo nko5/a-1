@@ -18,9 +18,7 @@ module.exports.getTravelTime = function(origin, destination, cb) {
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
-    if err
-    return cb(err);
-
+  
     var durationInMinutes = responseBody.rows[0].elements[0].duration.value / 60;
 
     return cb(null, {
