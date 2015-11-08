@@ -9,6 +9,7 @@ import 'angular-route';
 import 'arunisrael/angularjs-geolocation';
 import 'angular-ui/bootstrap-bower';
 import locationServiceModule from './services/location/location.module.js';
+import ngAutocomplete from './directives/ngAutocomplete.js';
 
 angular.module('app', [
     startupModule.name,
@@ -20,7 +21,8 @@ angular.module('app', [
     'ngRoute',
     'geolocation',
     'ui.bootstrap',
-    locationServiceModule.name
+    locationServiceModule.name,
+    ngAutocomplete.name
   ])
   .config(['$resourceProvider', '$routeProvider', '$locationProvider', function($resourceProvider, $routeProvider, $locationProvider) {
 

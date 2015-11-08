@@ -14,10 +14,11 @@ export default function($location, $routeParams, Agenda, geolocation,
       }).$promise.then(function(agenda) {
         vm.agenda = agenda;
         vm.agenda.date = new Date(vm.agenda.date);
+        vm.agenda.startTime = new Date(vm.agenda.startTime);
       });
     } else {
       vm.agenda = new Agenda();
-      populateStartAddressFromGeolocation(vm.agenda);
+      // populateStartAddressFromGeolocation(vm.agenda);
     }
 
     vm.title = isEdit ? "Change My Plan" : "Plan a New Day";
@@ -43,18 +44,33 @@ export default function($location, $routeParams, Agenda, geolocation,
     $location.path('/agendas/' + agenda.id + '/task');
   }
 
-  function populateStartAddressFromGeolocation(agenda) {
-    geolocation.getLocation().then(function(data) {
-      locationService.getAddressByLatLon(data.coords.latitude,
-        data.coords.longitude).then(function(data) {
-          var address = _.find(data.data.results, function(locationResult) {
-            return _.includes(locationResult.types, "street_address");
-          }).formatted_address;
-          //assuming start and end address is same - user can change it
-          agenda.startAddress = address;
-          agenda.endAddress = address;
-      });
+  vm.getStartTimes = function() {
+    let startTimes = {};
+    let displayTime;
+    let isoTime;
+    _.times(12, function(time) {
+      displayTime = time+':'+'00AM';
+      isoTime = moment(displayTime, 'HH:mma').toISOString();
+      startTimes[isoTime] = displayTime;
+      displayTime = time+':'+'30AM';
+      isoTime = moment(displayTime, 'HH:mma').toISOString();
+      startTimes[isoTime] = displayTime;
     });
-  }
+    return startTimes;
+  };
+
+  // function populateStartAddressFromGeolocation(agenda) {
+  //   geolocation.getLocation().then(function(data) {
+  //     locationService.getAddressByLatLon(data.coords.latitude,
+  //       data.coords.longitude).then(function(data) {
+  //         var address = _.find(data.data.results, function(locationResult) {
+  //           return _.includes(locationResult.types, "street_address");
+  //         }).formatted_address;
+  //         //assuming start and end address is same - user can change it
+  //         agenda.startAddress = address;
+  //         agenda.endAddress = address;
+  //     });
+  //   });
+  // }
 
 }

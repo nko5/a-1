@@ -31,6 +31,7 @@ function getTravelTime(origin, destination, cb) {
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
+
     if (err) {
       return cb(err);
     }
@@ -42,5 +43,13 @@ function getTravelTime(origin, destination, cb) {
         minutes: durationInMinutes
       }
     });
+  });
+};
+
+module.exports.getTravelTimeReqHandler = function(req, res) {
+  let origin = req.query.origin;
+  let destination = req.query.destination;
+  getTravelTime(origin, destination, function(err, duration) {
+    res.json(duration);
   });
 };
