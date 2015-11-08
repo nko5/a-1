@@ -13,6 +13,7 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
         id: $routeParams.taskId
       }).$promise.then(function(task) {
         vm.task = task;
+        vm.task.duration = ''+vm.task.duration;
       });
     } else {
       vm.task = new Task();
