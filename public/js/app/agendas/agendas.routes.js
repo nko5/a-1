@@ -27,14 +27,5 @@ export default function($routeProvider) {
         controller: EditAgendaController,
         controllerAs: 'vm'
     });
-    //
-    // function getAgendas(agendasService){
-    //     return agendasService.fetch();
-    // }
-    //
-    // function getAgenda($route, agendasService) {
-    //     let id = $route.current.params.id;
-    //     return agendasService.fetch(id);
-    // }
 
 }

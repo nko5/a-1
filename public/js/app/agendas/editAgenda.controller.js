@@ -13,6 +13,7 @@ export default function($location, $routeParams, Agenda, geolocation,
         id: $routeParams.agendaId
       }).$promise.then(function(agenda) {
         vm.agenda = agenda;
+        vm.agenda.date = new Date(vm.agenda.date);
       });
     } else {
       vm.agenda = new Agenda();
@@ -27,9 +28,11 @@ export default function($location, $routeParams, Agenda, geolocation,
   }
 
   vm.createAgenda = function() {
-    var Model = $routeParams.agendaId ? vm.agenda.$update() : vm.agenda.$save();
-    Model.then(function(success) {
-      $location.path('/agendas/');
+    var Model;
+    Model = $routeParams.agendaId ? vm.agenda.$update() : vm.agenda.$save();
+    Model.then(function(data) {
+      data.date = new Date(data.date);
+      $location.path('/agendas/'+data._id);
     }, function(error) {
       $location.path('/agendas/');
     });
@@ -44,9 +47,12 @@ export default function($location, $routeParams, Agenda, geolocation,
     geolocation.getLocation().then(function(data) {
       locationService.getAddressByLatLon(data.coords.latitude,
         data.coords.longitude).then(function(data) {
-        agenda.startAddress = _.find(data.data.results, function(locationResult) {
-          return _.includes(locationResult.types, "street_address");
-        }).formatted_address;
+          var address = _.find(data.data.results, function(locationResult) {
+            return _.includes(locationResult.types, "street_address");
+          }).formatted_address;
+          //assuming start and end address is same - user can change it
+          agenda.startAddress = address;
+          agenda.endAddress = address;
       });
     });
   }

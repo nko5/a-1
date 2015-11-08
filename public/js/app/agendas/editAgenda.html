@@ -5,15 +5,15 @@
     <form ng-submit="vm.createAgenda()">
         <div class="form-group">
             <label for="agendaDate">What day would you like to plan?</label>
-            <input id="agendaDate" class="form-control" type="date" />
+            <input id="agendaDate" class="form-control" ng-model="vm.agenda.date" type="date" />
         </div>
         <div class="form-group">
-            <label for="agendaDescription">Description (optional)</label>
+            <label for="agendaDescription">Description</label>
             <input id="agendaDescription" class="form-control" type="text" ng-model="vm.agenda.description" />
         </div>
         <div class="form-group">
             <label for="agendaStartTime">When will you start your day?</label>
-            <select id="agendaStartTime" class="form-control" >
+            <select id="agendaStartTime" ng-model="vm.agenda.startTime" class="form-control" >
                 <option value="0700">7:00AM</option>
                 <option value="0730">7:30AM</option>
                 <option value="0800">8:00AM</option>
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="agendaEndTime">When will you end your day?</label>
-            <select id="agendaEndTime" class="form-control" >
+            <select id="agendaEndTime" ng-model="vm.agenda.endTime" class="form-control" >
                 <option value="1200">12:00PM</option>
                 <option value="1230">12:30PM</option>
                 <option value="1300">1:00PM</option>
@@ -54,7 +54,7 @@
 
         <div class="form-group">
             <label for="endAtAddress">Ending at</label>
-            <input id="endAtAddress" class="form-control" type="text"/>
+            <input id="endAtAddress" class="form-control" ng-model="vm.agenda.endAddress" type="text"/>
         </div>
 
         <button class="btn btn-primary" type="submit">Start Planning</button>

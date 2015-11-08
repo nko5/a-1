@@ -6,6 +6,7 @@ import startupModule from './startup/startup.module.js';
 import 'angular/bower-angular-resource';
 import 'angular-route';
 import 'arunisrael/angularjs-geolocation';
+import 'angular-ui/bootstrap-bower';
 import locationServiceModule from './services/location/location.module.js';
 
 angular.module('app', [
@@ -16,6 +17,7 @@ angular.module('app', [
     'ngResource',
     'ngRoute',
     'geolocation',
+    'ui.bootstrap',
     locationServiceModule.name
   ])
   .config(['$resourceProvider', '$routeProvider', '$locationProvider', function($resourceProvider, $routeProvider, $locationProvider) {

@@ -9,6 +9,7 @@ export default function($location, $routeParams, Agenda) {
         id: $routeParams.agendaId
       }).$promise.then(function(agenda) {
         vm.agenda = agenda;
+        vm.agenda.date = new Date(vm.agenda.date);
       });
     } else {
       vm.agenda = {};
@@ -17,7 +18,7 @@ export default function($location, $routeParams, Agenda) {
 
   vm.newTask = function($event) {
     $event.preventDefault();
-    $location.path('/agendas/' + $routeParams.agendaId + '/task');
+    $location.path('/agendas/' + $routeParams.agendaId + '/tasks/new');
   }
 
   vm.editAgenda = function($event) {

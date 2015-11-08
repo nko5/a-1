@@ -1,10 +1,10 @@
-import TaskController from './task.controller.js';
+import EditTaskController from './editTask.controller.js';
 
 export default function($routeProvider) {
 
-    $routeProvider.when('agendas/:agendaId/tasks/new', {
+    $routeProvider.when('/agendas/:agendaId/tasks/new', {
         templateUrl: 'js/app/agendas/editTask.html'
-        controller: TaskController,
+        controller: EditTaskController,
         controllerAs: 'vm'
     });
 

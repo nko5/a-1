@@ -1,7 +1,13 @@
-export default function($location, Agenda) {
+export default function($location, profileService) {
     var vm = this;
 
-    vm.agendas = Agenda.query();
+    init();
+
+    function init() {
+      profileService.fetch().then(function(profile){
+          vm.agendas = profile.agendas;
+      });
+    }
 
     vm.goToAgenda =  getToAgenda;
 
