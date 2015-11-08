@@ -6,7 +6,10 @@ var querystring = require('querystring');
 module.exports.getLocationDetails = function(req, res) {
   let lat = req.query.lat;
   let long = req.query.long;
-  var qs = querystring.stringify({ latlng: `${lat},${long}`, key: process.env.GOOGLE_API_KEY})
+  var qs = querystring.stringify({
+    latlng: `${lat},${long}`,
+    key: process.env.GOOGLE_API_KEY
+  })
 
   var url = 'https://maps.googleapis.com/maps/api/geocode/json?' + qs;
   request.get(url, {
@@ -30,9 +33,25 @@ module.exports.getTravelTimeReqHandler = function(req, res) {
 };
 
 function getTravelTime(origin, destination, cb) {
-  var qs = querystring.stringify({ origins: origin,
+
+  function getDurationValue(responseBody) {
+
+    if (responseBody && responseBody.rows &&
+      responseBody.rows.length > 0 && responseBody.rows[0] &&
+      responseBody.rows[0].elements.length > 0 &&
+      responseBody.rows[0].elements[0].duration &&
+      responseBody.rows[0].elements[0].duration.value) {
+      return responseBody.rows[0].elements[0].duration.value;
+    } else {
+      return 0;
+    }
+  }
+
+  var qs = querystring.stringify({
+    origins: origin,
     destinations: destination,
-    key: process.env.GOOGLE_API_KEY});
+    key: process.env.GOOGLE_API_KEY
+  });
 
   var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?' + qs;
 
@@ -43,10 +62,10 @@ function getTravelTime(origin, destination, cb) {
     if (err) {
       return cb(err);
     }
-    var durationInMinutes = responseBody.rows[0].elements[0].duration ? responseBody.rows[0].elements[0].duration.value / 60 : 0;
+
     return cb(null, {
       duration: {
-        minutes: durationInMinutes
+        minutes: getDurationValue(responseBody)
       }
     });
   });

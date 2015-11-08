@@ -30,7 +30,6 @@ function getReturnTask(agendaDoc) {
   var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
 
   var travelToEndTask = {
-    sequenceNumber: agendaDoc.tasks.length,
     description: "Travel to end address",
     duration: 0,
     location: agendaDoc.endAddress
@@ -49,6 +48,10 @@ module.exports.planDay = function(req, res) {
         return handleError(err)
       };
 
+      if (!doc) {
+        return res.status(404).json({result:"not found."})
+      }
+
       var agendaDoc = doc.toObject();
       var promises = [];
 
@@ -57,8 +60,6 @@ module.exports.planDay = function(req, res) {
           var startLocation = getStartingLocation(agendaDoc, i);
           var currentTask = agendaDoc.tasks[i];
           var endLocation = currentTask.location;
-          // TODO: add sequence number from ui
-          currentTask.sequenceNumber = i;
 
           promises.push(getTravelDuration(startLocation, endLocation, currentTask));
         }
