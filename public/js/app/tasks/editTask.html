@@ -12,6 +12,7 @@
       </select>
     </div>
 
+    <div ng-if="vm.task.type === 'running'" ng-include="'js/app/tasks/runTask.html'"></div>
     <div ng-if="vm.task.type === 'movie'" ng-include="'js/app/tasks/movieTask.html'"></div>
     <div ng-if="vm.task.type === 'other'" ng-include="'js/app/tasks/otherTask.html'"></div>
 

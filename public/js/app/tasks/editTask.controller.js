@@ -28,6 +28,10 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
     let Model;
     let params = { agendaId: $routeParams.agendaId };
 
+    if(vm.task.type === 'running') {
+      vm.task.description = `Running for ${vm.task.duration} mins`;
+    }
+
     if(vm.task.type === 'movie') {
       vm.task.description = `Movie - ${vm.movie.name.name} at ${vm.movie.theater.name}`;
       vm.task.duration = vm.movie.name.runtime;
