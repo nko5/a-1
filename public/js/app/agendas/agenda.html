@@ -21,6 +21,8 @@
             <div class="card">
                 <h3>{{task.description}}</h3>
                 <p>Duration: {{task.duration}}</p>
+                <a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>
+                <a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>
             </div>
         </li>
     </ul>

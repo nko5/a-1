@@ -9,6 +9,7 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
     let isEdit = !!$routeParams.taskId;
     if (isEdit) {
       Task.get({
+        agendaId: $routeParams.agendaId,
         id: $routeParams.taskId
       }).$promise.then(function(task) {
         vm.task = task;
@@ -38,7 +39,7 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
       vm.task.location = vm.movie.theater.address;
     }
 
-    Model = $routeParams.taskId ? vm.task.$update(parmas) : vm.task.$save(params);
+    Model = $routeParams.taskId ? vm.task.$update(params) : vm.task.$save(params);
     Model.then(function(success) {
       $location.path('/agendas/'+ $routeParams.agendaId);
     }, function(error) {

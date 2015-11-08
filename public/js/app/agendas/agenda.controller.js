@@ -1,4 +1,4 @@
-export default function($location, $routeParams, Agenda) {
+export default function($location, $route, $routeParams, Agenda, Task) {
   var vm = this;
 
   init();
@@ -19,6 +19,17 @@ export default function($location, $routeParams, Agenda) {
   vm.newTask = function($event) {
     $event.preventDefault();
     $location.path('/agendas/' + $routeParams.agendaId + '/tasks/new');
+  }
+
+  vm.editTask = function($event, taskId) {
+    $event.preventDefault();
+    $location.path('/agendas/' + $routeParams.agendaId + '/tasks/' + taskId + '/edit');
+  }
+
+  vm.removeTask = function($event, taskId) {
+    $event.preventDefault();
+    Task.remove({ agendaId: $routeParams.agendaId, id: taskId });
+    $route.reload();
   }
 
   vm.editAgenda = function($event) {
