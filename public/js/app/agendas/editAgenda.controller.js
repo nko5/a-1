@@ -14,7 +14,6 @@ export default function($location, $routeParams, Agenda, geolocation,
       }).$promise.then(function(agenda) {
         vm.agenda = agenda;
         vm.agenda.date = new Date(vm.agenda.date);
-        vm.agenda.startTime = new Date(vm.agenda.startTime);
       });
     } else {
       vm.agenda = new Agenda();
@@ -49,11 +48,11 @@ export default function($location, $routeParams, Agenda, geolocation,
     let displayTime;
     let isoTime;
     _.times(12, function(time) {
-      displayTime = time+':'+'00AM';
-      isoTime = moment(displayTime, 'HH:mma').toISOString();
+      displayTime = time+':'+'00 AM';
+      isoTime = moment(displayTime, 'HH:mm a').toISOString();
       startTimes[isoTime] = displayTime;
-      displayTime = time+':'+'30AM';
-      isoTime = moment(displayTime, 'HH:mma').toISOString();
+      displayTime = time+':'+'30 AM';
+      isoTime = moment(displayTime, 'HH:mm a').toISOString();
       startTimes[isoTime] = displayTime;
     });
     return startTimes;
