@@ -55,8 +55,17 @@ export default function($location, $routeParams, Agenda, geolocation,
       isoTime = moment(displayTime, 'HH:mm a').toISOString();
       startTimes[isoTime] = displayTime;
     });
+    _.times(12, function(time) {
+      displayTime = time+':'+'00 PM';
+      isoTime = moment(displayTime, 'HH:mm a').toISOString();
+      startTimes[isoTime] = displayTime;
+      displayTime = time+':'+'30 PM';
+      isoTime = moment(displayTime, 'HH:mm a').toISOString();
+      startTimes[isoTime] = displayTime;
+    });
     return startTimes;
   };
+
 
   // function populateStartAddressFromGeolocation(agenda) {
   //   geolocation.getLocation().then(function(data) {

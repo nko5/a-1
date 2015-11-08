@@ -8,7 +8,8 @@ const locationController = require('../controllers/locationController');
 const planController = require('../controllers/planController');
 
 router.route('/movies').get(moviesController.getTheaters);
-router.route('/places').get(placesController.getPlaces);
+router.route('/places').post(placesController.getPlaces);
+router.route('/placeDetails').post(placesController.getPlaceDetails);
 router.route('/location').get(locationController.getLocationDetails);
 router.route('/travel-time').get(locationController.getTravelTimeReqHandler);
 router.route('/plan/:agendaId').get(planController.planDay);

@@ -6,15 +6,17 @@
     <div class="form-group">
       <label for="taskType">What type of task would you like to do?</label>
       <select id="taskType" ng-model="vm.task.type" class="form-control" ng-change="vm.updateType()">
-          <option value="running">Go for a Run</option>
+          <option value="running">Go for a Running</option>
+          <option value="glocery">Go for glocery shopping</option>
           <option value="movie">Watch a movie</option>
           <option value="other">Other</option>
       </select>
     </div>
 
-    <div ng-if="vm.task.type === 'running'" ng-include="'js/app/tasks/runTask.html'"></div>
-    <div ng-if="vm.task.type === 'movie'" ng-include="'js/app/tasks/movieTask.html'"></div>
-    <div ng-if="vm.task.type === 'other'" ng-include="'js/app/tasks/otherTask.html'"></div>
+    <div ng-if="vm.task.type === 'glocery'" ng-include="'js/app/tasks/types/gloceryTask.html'"></div>
+    <div ng-if="vm.task.type === 'running'" ng-include="'js/app/tasks/types/runTask.html'"></div>
+    <div ng-if="vm.task.type === 'movie'" ng-include="'js/app/tasks/types/movieTask.html'"></div>
+    <div ng-if="vm.task.type === 'other'" ng-include="'js/app/tasks/types/otherTask.html'"></div>
 
     <button class="btn btn-primary" type="submit">{{vm.title}}</button>
     <a href="{{vm.cancelTo}}" class="btn btn-link">Cancel</a>
