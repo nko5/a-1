@@ -8,7 +8,7 @@ const taskSchema = new Schema({
   type: {type: String, default: ''},
   description: {type: String, default: ''},
   duration: {type: Number},
-  location: {type: Schema.Types.ObjectId, ref: 'Address'}
+  location: {type: String, default: ''}
 });
 
 exports = module.exports = mongoose.model('Task', taskSchema);

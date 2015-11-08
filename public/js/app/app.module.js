@@ -1,6 +1,7 @@
 import angular from 'angular';
 import loginModule from './login/login.module.js';
 import agendasModule from './agendas/agendas.module.js';
+import tasksModule from './tasks/tasks.module.js';
 import headerModule from './header/header.module.js';
 import startupModule from './startup/startup.module.js';
 import 'angular/bower-angular-resource';
@@ -12,8 +13,9 @@ import locationServiceModule from './services/location/location.module.js';
 angular.module('app', [
     startupModule.name,
     loginModule.name,
-    agendasModule.name,
     headerModule.name,
+    agendasModule.name,
+    tasksModule.name,
     'ngResource',
     'ngRoute',
     'geolocation',

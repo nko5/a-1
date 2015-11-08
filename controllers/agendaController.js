@@ -1,21 +1,28 @@
-var mongoose = require('mongoose');
-var Coral = require('coral');
-var authController = require('./authController');
+'use strict';
 
-module.exports = function (app) {
+const mongoose = require('mongoose');
+const Coral = require('coral');
+const authController = require('./authController');
 
-    var config = {
-        path: '/api/agendas',
-        model: mongoose.model('Agenda'),
-        updateRef: {
-            model: mongoose.model('User'),
-            path: 'agendas',
-            findOneId: authController.getCurrentUser
-        },
-        middlewares: [authController.ensureAuthenticated]
-    };
+module.exports = function(app) {
 
-    config.method = ['GET', 'POST', 'PUT', 'DELETE'];
-    app.use(new Coral(config));
+  let config = {
+    path: '/api/agendas',
+    model: mongoose.model('Agenda'),
+    updateRef: {
+      model: mongoose.model('User'),
+      path: 'agendas',
+      findOneId: authController.getCurrentUser
+    },
+    query: {
+      options: {
+        populate: 'tasks'
+      }
+    },
+    middlewares: [authController.ensureAuthenticated]
+  };
+
+  config.method = ['GET', 'POST', 'PUT', 'DELETE'];
+  app.use(new Coral(config));
 
 };

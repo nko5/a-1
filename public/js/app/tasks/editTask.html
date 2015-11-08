@@ -1,0 +1,18 @@
+<div id="editTask" class="form-entry-page">
+  <div class="page-title-panel">
+    <h2>{{vm.title}}</h2>
+  </div>
+  <form ng-submit="vm.createTask()">
+    <div class="form-group">
+      <label for="taskType">What tyep of task would you like to do?</label>
+      <select id="taskType" ng-model="vm.task.type" class="form-control" >
+          <option value="running">Go for a Run</option>
+          <option value="movie">Watch a movie</option>
+          <option value="other">Other</option>
+      </select>
+    </div>
+    <div ng-if="vm.task.type === 'other'" ng-include="'js/app/tasks/otherTask.html'"></div>
+    <button class="btn btn-primary" type="submit">Add Task</button>
+    <a href="{{vm.cancelTo}}" class="btn btn-link">Cancel</a>
+  </form>
+</div>
