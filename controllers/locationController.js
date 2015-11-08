@@ -35,7 +35,7 @@ function getTravelTime(origin, destination, cb) {
     key: process.env.GOOGLE_API_KEY});
 
   var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?' + qs;
-  console.log(qs);
+
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
