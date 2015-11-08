@@ -1,17 +1,19 @@
-<div id="editAgenda">
-    <h2>Plan a New Day</h2>
+<div id="editAgenda" class="form-entry-page">
+    <div class="page-title-panel">
+        <h2>{{vm.title}}</h2>
+    </div>
     <form ng-submit="vm.createAgenda()">
-        <div class="form-control">
+        <div class="form-group">
             <label for="agendaDate">What day would you like to plan?</label>
-            <input id="agendaDate" type="date" />
+            <input id="agendaDate" class="form-control" type="date" />
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="agendaDescription">Description (optional)</label>
-            <input id="agendaDescription" type="text" ng-model="vm.agenda.description" />
+            <input id="agendaDescription" class="form-control" type="text" ng-model="vm.agenda.description" />
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="agendaStartTime">When will you start your day?</label>
-            <select id="agendaStartTime">
+            <select id="agendaStartTime" class="form-control" >
                 <option value="0700">7:00AM</option>
                 <option value="0730">7:30AM</option>
                 <option value="0800">8:00AM</option>
@@ -25,9 +27,9 @@
                 <option value="1200">12:00PM</option>
             </select>
         </div>
-        <div class="form-control">
+        <div class="form-group">
             <label for="agendaEndTime">When will you end your day?</label>
-            <select id="agendaEndTime">
+            <select id="agendaEndTime" class="form-control" >
                 <option value="1200">12:00PM</option>
                 <option value="1230">12:30PM</option>
                 <option value="1300">1:00PM</option>
@@ -45,21 +47,17 @@
             </select>
         </div>
 
-        <fieldset>
-            <legend>Starting from</legend>
-            <div class="form-control">
-                <label for="startFromAddress">Address</label>
-                <input id="startFromAddress" type="text" ng-model="vm.agenda.startAddress"/>
-            </div>
-        </fieldset>
+        <div class="form-group">
+            <label for="startFromAddress">Starting from</label>
+            <input id="startFromAddress" class="form-control" type="text" ng-model="vm.agenda.startAddress"/>
+        </div>
 
-        <fieldset>
-            <legend>Ending at</legend>
-            <div class="form-control">
-                <label for="endAtAddress">Address</label>
-                <input id="endAtAddress" type="text"/>
-            </div>
-        </fieldset>
-        <button type="submit">Start Planning</button>
+        <div class="form-group">
+            <label for="endAtAddress">Ending at</label>
+            <input id="endAtAddress" class="form-control" type="text"/>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Start Planning</button>
+        <a href="{{vm.cancelTo}}" class="btn btn-link">Cancel</a>
     </form>
 </div>

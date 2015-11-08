@@ -7,7 +7,8 @@ export default function($location, $routeParams, Agenda, geolocation,
   init();
 
   function init() {
-    if ($routeParams.agendaId) {
+    let isEdit = !!$routeParams.agendaId;
+    if (isEdit) {
       Agenda.get({
         id: $routeParams.agendaId
       }).$promise.then(function(agenda) {
@@ -16,6 +17,12 @@ export default function($location, $routeParams, Agenda, geolocation,
     } else {
       vm.agenda = new Agenda();
       populateStartAddressFromGeolocation(vm.agenda);
+    }
+
+    vm.title = isEdit ? "Change My Plan" : "Plan a New Day";
+    vm.cancelTo = "#/agendas";
+    if (isEdit) {
+      vm.cancelTo += '/' + $routeParams.agendaId
     }
   }
 

@@ -53,5 +53,18 @@
   },
   "github:components/jquery@2.1.4": {},
   "github:angular/bower-angular-resource@1.4.7": {},
-  "github:arunisrael/angularjs-geolocation@0.1.1": {}
+  "github:arunisrael/angularjs-geolocation@0.1.1": {},
+  "npm:angular-google-maps@2.2.1": {
+    "angular": "npm:angular@~1.4.0",
+    "angular-simple-logger": "npm:angular-simple-logger@~0.0.1",
+    "lodash": "npm:lodash",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:angular@1.4.7": {
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  },
+  "npm:angular-simple-logger@0.0.4": {
+    "angular": "npm:angular@^1.2",
+    "process": "github:jspm/nodelibs-process@^0.1.0"
+  }
 }

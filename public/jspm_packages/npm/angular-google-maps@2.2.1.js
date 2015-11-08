@@ -1,0 +1,1 @@
+module.exports = require("npm:angular-google-maps@2.2.1/dist/angular-google-maps");
