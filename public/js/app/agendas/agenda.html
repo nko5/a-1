@@ -1,14 +1,27 @@
-<h2>{{vm.agenda.date | date:'fullDate'}}</h2>
-<p>{{vm.agenda.description}}</p>
-<a ng-href="/#/agendas/{{vm.agenda._id}}/edit">Edit</a>
-
-
-<p><a href="#" ng-click="vm.newTask($event)">Add a task</a></p>
-<ul class="card-list">
-    <li ng-repeat="task in vm.agenda.tasks">
-        <div class="card">
-            <h3>{{task.description}}</h3>
-            <p>Duration: {{task.durationHours}} hrs</p>
+<div class="agenda-view-panel">
+    <div class="page-title-panel">
+        <!--<h2>{{vm.agenda.date | date:'fullDate'}}</h2>-->
+        <h2>Monday, November 9th <small> | <a ng-href="/#/agendas/{{vm.agenda._id}}/edit">edit</a></small></h2>
+        <div>
+            <span>{{vm.agenda.description}}</span>
         </div>
-    </li>
-</ul>
+        <a href="#/agendas" class="btn btn-default btn-sm go-back-btn" title="Back to My Plans">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Back to My Plans</span>
+        </a>
+        <a href="#" class="btn btn-default btn-sm add-task-btn" ng-click="vm.newTask($event)" title="Add a task">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span class="sr-only">Add a task (plus button)</span>
+        </a>
+    </div>
+
+    <p ng-if="!vm.agenda.tasks.length" class="no-content-message centered">Add tasks to your plan by <nobr>pressing the <span class="glyphicon glyphicon-plus"></span><span class="sr-only">plus</span> button above.</nobr></p>
+    <ul class="card-list">
+        <li ng-repeat="task in vm.agenda.tasks">
+            <div class="card">
+                <h3>{{task.description}}</h3>
+                <p>Duration: {{task.durationHours}} hrs</p>
+            </div>
+        </li>
+    </ul>
+</div>

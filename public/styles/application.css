@@ -6679,3 +6679,30 @@ p {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 7px 7px 0 0;
 }
+.agenda-view-panel .page-title-panel {
+  margin: -20px -20px 10px -20px;
+  padding: 10px 45px;
+  background-color: #ffffff;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+  border-radius: 7px 7px 0 0;
+  position: relative;
+}
+.agenda-view-panel .page-title-panel .btn-default {
+  border-color: #107FC9;
+  color: #107FC9;
+}
+.agenda-view-panel .page-title-panel .go-back-btn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.agenda-view-panel .page-title-panel .add-task-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.no-content-message {
+  margin: 40px 0;
+  color: #777777;
+  font-size: 1.333333em;
+}
