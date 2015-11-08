@@ -13,6 +13,19 @@ function getStartingLocation(agendaDoc, currentTaskIndex) {
   }
 }
 
+function getTravelDuration(startLocation, endLocation, currentTask) {
+  return new Promise(function(resolve, reject) {
+    locationController.getTravelTime(startLocation, endLocation, function(err, duration) {
+      if (err) {
+        return reject(err)
+      };
+
+      currentTask.travelDuration = duration.duration.minutes;
+      return resolve(currentTask);
+    });
+  })
+}
+
 module.exports.planDay = function(req, res) {
   Agenda.findOne({
       _id: req.params.agendaId
@@ -26,25 +39,30 @@ module.exports.planDay = function(req, res) {
       var agendaDoc = doc.toObject();
       var promises = [];
 
-      for(var i = 0; i < agendaDoc.tasks.length; i++) {
+      for (var i = 0; i < agendaDoc.tasks.length; i++) {
         var startLocation = getStartingLocation(agendaDoc, i);
         var currentTask = agendaDoc.tasks[i];
         var endLocation = currentTask.location;
+        // TODO: add sequence number from ui
+        currentTask.sequenceNumber = i;
 
-        promises.push(new Promise(function(resolve, reject) {
-          locationController.getTravelTime(startLocation, endLocation, function(err, duration) {
-            if (err) {
-              return reject(err)
-            };
+        promises.push(getTravelDuration(startLocation, endLocation, currentTask));
+      }
 
-            currentTask.travelDuration = duration.duration.minutes;
-            return resolve(currentTask);
-          });
-        }));
+      if (agendaDoc.endAddress !== "") {
+        var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
+
+        var travelToEndTask = {
+          sequenceNumber: agendaDoc.tasks.length,
+          description: "Travel to end address",
+          duration: 0,
+          location: agendaDoc.endAddress
+        };
+
+        promises.push(getTravelDuration(lastTask.location, travelToEndTask.location, travelToEndTask));
       }
 
       Promise.all(promises).then(function(values) {
-        //console.dir(values);
         agendaDoc.tasks = values;
         res.json(agendaDoc);
       });
