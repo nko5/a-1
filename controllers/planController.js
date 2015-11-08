@@ -39,32 +39,36 @@ module.exports.planDay = function(req, res) {
       var agendaDoc = doc.toObject();
       var promises = [];
 
-      for (var i = 0; i < agendaDoc.tasks.length; i++) {
-        var startLocation = getStartingLocation(agendaDoc, i);
-        var currentTask = agendaDoc.tasks[i];
-        var endLocation = currentTask.location;
-        // TODO: add sequence number from ui
-        currentTask.sequenceNumber = i;
+      if (agendaDoc.tasks.length > 0) {
+        for (var i = 0; i < agendaDoc.tasks.length; i++) {
+          var startLocation = getStartingLocation(agendaDoc, i);
+          var currentTask = agendaDoc.tasks[i];
+          var endLocation = currentTask.location;
+          // TODO: add sequence number from ui
+          currentTask.sequenceNumber = i;
 
-        promises.push(getTravelDuration(startLocation, endLocation, currentTask));
+          promises.push(getTravelDuration(startLocation, endLocation, currentTask));
+        }
+
+        if (agendaDoc.endAddress !== "") {
+          var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
+
+          var travelToEndTask = {
+            sequenceNumber: agendaDoc.tasks.length,
+            description: "Travel to end address",
+            duration: 0,
+            location: agendaDoc.endAddress
+          };
+
+          promises.push(getTravelDuration(lastTask.location, travelToEndTask.location, travelToEndTask));
+        }
+
+        Promise.all(promises).then(function(values) {
+          agendaDoc.tasks = values;
+          return res.json(agendaDoc);
+        });
       }
 
-      if (agendaDoc.endAddress !== "") {
-        var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
-
-        var travelToEndTask = {
-          sequenceNumber: agendaDoc.tasks.length,
-          description: "Travel to end address",
-          duration: 0,
-          location: agendaDoc.endAddress
-        };
-
-        promises.push(getTravelDuration(lastTask.location, travelToEndTask.location, travelToEndTask));
-      }
-
-      Promise.all(promises).then(function(values) {
-        agendaDoc.tasks = values;
-        res.json(agendaDoc);
-      });
+      return res.json(agendaDoc);
     });
 }
