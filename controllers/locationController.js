@@ -35,9 +35,7 @@ function getTravelTime(origin, destination, cb) {
     if (err) {
       return cb(err);
     }
-
     var durationInMinutes = responseBody.rows[0].elements[0].duration.value / 60;
-
     return cb(null, {
       duration: {
         minutes: durationInMinutes

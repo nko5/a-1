@@ -26,9 +26,9 @@ module.exports.planDay = function(req, res) {
       var agendaDoc = doc.toObject();
       var promises = [];
 
-      for(var i = 0; i < agendaDocs.tasks.length; i++) {
+      for(var i = 0; i < agendaDoc.tasks.length; i++) {
         var startLocation = getStartingLocation(agendaDoc, i);
-        var currentTask = task[i];
+        var currentTask = agendaDoc.tasks[i];
         var endLocation = currentTask.location;
 
         promises.push(new Promise(function(resolve, reject) {
@@ -37,13 +37,14 @@ module.exports.planDay = function(req, res) {
               return reject(err)
             };
 
-            currentTask.travelDuration = duration.minutes;
-            return resolve(task);
+            currentTask.travelDuration = duration.duration.minutes;
+            return resolve(currentTask);
           });
         }));
       }
 
       Promise.all(promises).then(function(values) {
+        //console.dir(values);
         agendaDoc.tasks = values;
         res.json(agendaDoc);
       });
