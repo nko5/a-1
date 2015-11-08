@@ -3,7 +3,10 @@ import _ from 'lodash';
 export default function($scope, $location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
   var vm = this;
 
+  populateStartAddressFromGeolocation();
+
   init();
+
 
   function init() {
     let isEdit = !!$routeParams.taskId;
@@ -19,11 +22,11 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
       vm.task = new Task();
     }
 
+
+
     vm.title = isEdit ? "Change Task" : "Add Task";
     vm.cancelTo = "#/agendas/"+ $routeParams.agendaId;
-    if (isEdit) {
-      vm.cancelTo += '/' + $routeParams.agendaId
-    }
+
   }
 
   vm.createTask = function() {
@@ -33,18 +36,24 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
     let params = { agendaId: $routeParams.agendaId };
 
     if(vm.task.type === 'running') {
-      vm.task.description = `Running`;
+      vm.task.description = 'Running';
     }
 
     if(vm.task.type === 'glocery') {
-      vm.task.description = `Glocery Shopping`;
-      vm.task.location =vm.placeDetails.formatted_address;
+      vm.task.description = 'Glocery Shopping';
+      vm.task.location = vm.placeDetails.formatted_address;
+    }
+
+    if(vm.task.type === 'restaurant') {
+      vm.task.description = 'Go out to eat';
+      vm.task.location = vm.placeDetails.formatted_address;
     }
 
     if(vm.task.type === 'movie') {
       vm.task.description = `Movie - ${vm.movie.name.name}`;
       let runtime = moment(vm.movie.name.runtime, 'HH mm');
       vm.task.duration = moment.duration(runtime).asMinutes();
+      vm.task.startTime = moment(vm.movie.showtime, 'HH:mma').toISOString();
       vm.task.location = vm.movie.theater.address;
     }
 
@@ -76,11 +85,15 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
   };
 
   vm.updateType = function() {
+
       if(vm.task.type === 'movie') {
         vm.getTheaters();
       }
       if(vm.task.type === 'glocery') {
         vm.getPlaces('grocery_or_supermarket');
+      }
+      if(vm.task.type === 'restaurant') {
+        vm.getPlaces('restaurant');
       }
   };
 
@@ -149,6 +162,7 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
     });
   }
 
-  populateStartAddressFromGeolocation();
+
+
 
 }
