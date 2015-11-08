@@ -7,7 +7,7 @@ const taskSchema = new Schema({
   sequenceNumber: Number,
   description: {type: String, default: ''},
   type: {type: String, default: ''},
-  taskStartTime: Date,
+  startTime: {type: Date},
   duration: {type: Number},
   location: {type: String, default: ''}
 });

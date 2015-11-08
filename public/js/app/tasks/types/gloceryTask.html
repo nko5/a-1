@@ -20,7 +20,7 @@
   <p>Address : - {{vm.placeDetails.formatted_address}}</p>
   <p>Currently : - {{vm.placeDetails.opening_hours.open_now ? 'Open' : 'Closed'}}</p>
 </div>
-<div class="form-group">
+<div class="form-group" ng-if="vm.placeDetails">
     <label for="taskStartTime">What time do you want to go for shopping?</label>
-    <select id="taskStartTime" class="form-control" ng-model="vm.task.startTime" ng-options="key as value for (key , value) in vm.getStartTimes()"></select>
+    <select id="taskStartTime" class="form-control" ng-model="vm.task.startTime" ng-options="key as value for (key , value) in vm.getStartTimes(vm.placeDetails.opening_hours)"></select>
 </div>

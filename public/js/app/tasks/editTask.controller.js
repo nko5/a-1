@@ -32,11 +32,16 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
     let params = { agendaId: $routeParams.agendaId };
 
     if(vm.task.type === 'running') {
-      vm.task.description = `Running for ${vm.task.duration} mins`;
+      vm.task.description = `Running`;
+    }
+
+    if(vm.task.type === 'glocery') {
+      vm.task.description = `Glocery Shopping`;
+      vm.task.location =vm.placeDetails.formatted_address;
     }
 
     if(vm.task.type === 'movie') {
-      vm.task.description = `Movie - ${vm.movie.name.name} at ${vm.movie.theater.name}`;
+      vm.task.description = `Movie - ${vm.movie.name.name}`;
       let runtime = moment(vm.movie.name.runtime, 'HH mm');
       vm.task.duration = moment.duration(runtime).asMinutes();
       vm.task.location = vm.movie.theater.address;
