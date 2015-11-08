@@ -1,9 +1,17 @@
 <div class="form-group">
-  <label for="taskDescription">Description</label>
+  <label for="taskDescription">Task Description</label>
   <input id="taskDescription" class="form-control" type="text" ng-model="vm.task.description" />
 </div>
 <div class="form-group">
-  <label for="taskDuration">Duration</label>
+  <label for="taskLocation">Task Location</label>
+  <input id="taskLocation" ng-autocomplete="otherLocation" class="form-control" type="text" ng-model="vm.task.location" />
+</div>
+<div class="form-group">
+    <label for="taskStartTime">What time do you want to start task ?</label>
+    <select id="taskStartTime" class="form-control" ng-model="vm.task.startTime" ng-options="key as value for (key , value) in vm.getStartTimes()"></select>
+</div>
+<div class="form-group">
+  <label for="taskDuration">Duration of task</label>
   <select id="taskDuration" ng-model="vm.task.duration" class="form-control" >
       <option value="10">10 mins</option>
       <option value="20">20 mins</option>
@@ -15,8 +23,4 @@
       <option value="80">80 mins</option>
       <option value="90">90 mins</option>
   </select>
-</div>
-<div class="form-group">
-  <label for="taskLocation">Location</label>
-  <input id="taskLocation" ng-autocomplete="otherLocation" class="form-control" type="text" ng-model="vm.task.location" />
 </div>

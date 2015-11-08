@@ -49,6 +49,11 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
       vm.task.location = vm.placeDetails.formatted_address;
     }
 
+    if(vm.task.type === 'drappt') {
+      vm.task.description = 'Doctor';
+      vm.task.location = vm.placeDetails.formatted_address;
+    }
+
     if(vm.task.type === 'movie') {
       vm.task.description = `Movie - ${vm.movie.name.name}`;
       let runtime = moment(vm.movie.name.runtime, 'HH mm');
@@ -95,6 +100,10 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
       if(vm.task.type === 'restaurant') {
         vm.getPlaces('restaurant');
       }
+      if(vm.task.type === 'drappt') {
+        vm.getPlaces('doctor');
+      }
+
   };
 
   $scope.$watch('vm.place', function(current, original) {
