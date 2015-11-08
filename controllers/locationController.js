@@ -19,7 +19,7 @@ module.exports.getTravelTimeReqHandler = function(req, res) {
   getTravelTime(req.query.origin, req.query.destination, function(err, duration) {
     if (err) {
       res.status(500).send({
-        message: 'Error retreiving travel time.'
+        message: 'Error retrieving travel time.'
       });
     }
     res.json(duration);
@@ -27,7 +27,7 @@ module.exports.getTravelTimeReqHandler = function(req, res) {
 };
 
 function getTravelTime(origin, destination, cb) {
-  var url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&mode=driving&language=en-US&key=${process.env.GOOGLE_API_KEY}`;
+  var url = encodeURI(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&mode=driving&language=en-US&key=${process.env.GOOGLE_API_KEY}`);
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
@@ -35,7 +35,7 @@ function getTravelTime(origin, destination, cb) {
     if (err) {
       return cb(err);
     }
-    var durationInMinutes = responseBody.rows[0].elements[0].duration.value / 60;
+    var durationInMinutes = responseBody.rows[0].elements[0].duration ? responseBody.rows[0].elements[0].duration.value / 60 : 0;
     return cb(null, {
       duration: {
         minutes: durationInMinutes
