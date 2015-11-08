@@ -1,18 +1,21 @@
 <div class="agendas-view">
-    <div class="page-title-panel">
-        <h2>My Plans</h2>
-    </div>
-    <ul class="card-list">
-        <li class="centered" ng-repeat="agenda in vm.agendas">
-            <a class="card-thick-border" href="#" ng-click="vm.goToAgenda(agenda, $event)">
-                <p>{{agenda.date | date:'fullDate'}}</p>
-                <p>{{agenda.description}}</p>
-            </a>
-        </li>
-        <li class="centered">
-            <a href="#/agendas/new" class="card-thick-border">
-                <p class="muted">Plan a New Day</p>
-            </a>
-        </li>
-    </ul>
+  <div class="page-title-panel">
+    <h2>My Plans</h2>
+  </div>
+  <ul class="card-list">
+    <li class="centered" ng-repeat="agenda in vm.agendas">
+      <div class="card-thick-border">
+        <a href="#" ng-click="vm.goToAgenda(agenda, $event)">
+          <p>{{agenda.date | date:'fullDate'}}</p>
+          <p>{{agenda.description}}</p>
+        </a>
+        <a href="#" ng-click="vm.removeAgenda(agenda, $event)">Remove plan</a>
+      </div>
+    </li>
+    <li class="centered">
+      <a href="#/agendas/new" class="card-thick-border">
+        <p class="muted">Plan a New Day</p>
+      </a>
+    </li>
+  </ul>
 </div>

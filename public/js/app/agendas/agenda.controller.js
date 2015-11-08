@@ -28,8 +28,9 @@ export default function($location, $route, $routeParams, Agenda, Task) {
 
   vm.removeTask = function($event, taskId) {
     $event.preventDefault();
-    Task.remove({ agendaId: $routeParams.agendaId, id: taskId });
-    $route.reload();
+    Task.remove({ agendaId: $routeParams.agendaId, id: taskId }).$promise.then(function() {
+      $route.reload();
+    });
   }
 
   vm.editAgenda = function($event) {

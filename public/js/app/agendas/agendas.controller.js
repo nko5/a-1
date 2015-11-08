@@ -1,18 +1,24 @@
-export default function($location, profileService) {
-    var vm = this;
+export default function($location, $route, profileService, Agenda) {
+  var vm = this;
 
-    init();
+  init();
 
-    function init() {
-      profileService.fetch().then(function(profile){
-          vm.agendas = profile.agendas;
-      });
-    }
+  function init() {
+    profileService.fetch().then(function(profile) {
+      vm.agendas = profile.agendas;
+    });
+  }
 
-    vm.goToAgenda =  getToAgenda;
+  vm.goToAgenda = function(agenda, $event) {
+    $event.preventDefault();
+    $location.path('/agendas/' + agenda._id);
+  }
 
-    function getToAgenda(agenda, $event) {
-        $location.path('/agendas/'+agenda._id);
-        $event.preventDefault();
-    }
+  vm.removeAgenda = function(agenda, $event) {
+    $event.preventDefault();
+    Agenda.remove({ id: agenda._id }).$promise.then(function() {
+      $route.reload();
+    });
+  }
+
 }
