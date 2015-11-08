@@ -6,9 +6,12 @@
     <div class="form-group">
       <label for="taskType">What type of task would you like to do?</label>
       <select id="taskType" ng-model="vm.task.type" class="form-control" ng-change="vm.updateType()">
-          <option value="running">Go for a Running</option>
+          <option value="running">Go for a run</option>
           <option value="glocery">Go for glocery shopping</option>
           <option value="movie">Watch a movie</option>
+          <option value="restaurant">Go out to eat</option>
+          <option value="visit">Visit friends/family</option>
+          <option value="drappt">Dr. Appointment</option>
           <option value="other">Other</option>
       </select>
     </div>
@@ -16,6 +19,9 @@
     <div ng-if="vm.task.type === 'glocery'" ng-include="'js/app/tasks/types/gloceryTask.html'"></div>
     <div ng-if="vm.task.type === 'running'" ng-include="'js/app/tasks/types/runTask.html'"></div>
     <div ng-if="vm.task.type === 'movie'" ng-include="'js/app/tasks/types/movieTask.html'"></div>
+    <div ng-if="vm.task.type === 'restaurant'" ng-include="'js/app/tasks/types/restaurant.html'"></div>
+    <div ng-if="vm.task.type === 'visit'" ng-include="'js/app/tasks/types/visitTask.html'"></div>
+    <div ng-if="vm.task.type === 'drappt'" ng-include="'js/app/tasks/types/drApptTask.html'"></div>
     <div ng-if="vm.task.type === 'other'" ng-include="'js/app/tasks/types/otherTask.html'"></div>
 
     <button class="btn btn-primary" type="submit">{{vm.title}}</button>
