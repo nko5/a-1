@@ -8,7 +8,8 @@ const locationController = require('../controllers/locationController');
 
 router.route('/movies').get(moviesController.getTheaters);
 router.route('/places').get(placesController.getPlaces);
-router.route('/location').get(locationController.getLocationDetails)
+router.route('/location').get(locationController.getLocationDetails);
+router.route('/travel-time').get(locationController.getTravelTime);
 
 router.use(authController.ensureAuthenticated);
 router.route('/profile').get(profileController.getUserAccount);
