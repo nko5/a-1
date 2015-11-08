@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
-  name: {type: String, default: ''},
-  type: {type: String, default: ''},
   description: {type: String, default: ''},
-  duration: {type: Number},
+  type: {type: String, default: ''},
+  duration: {type: String},
   location: {type: String, default: ''}
 });
 
