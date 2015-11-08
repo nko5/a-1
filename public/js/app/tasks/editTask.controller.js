@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default function($location, $routeParams, $http, Task, geolocation, locationService) {
+export default function($location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
   var vm = this;
 
   init();
@@ -27,6 +27,8 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
 
   vm.createTask = function() {
     let Model;
+    let agenda = AgendaService.currentAgenda();
+    let lastTask = agenda && agenda.tasks && agenda.tasks.length && agenda.tasks[agenda.tasks.length-1] || {}
     let params = { agendaId: $routeParams.agendaId };
 
     if(vm.task.type === 'running') {
@@ -38,6 +40,10 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
       let runtime = moment(vm.movie.name.runtime, 'HH mm');
       vm.task.duration = moment.duration(runtime).asMinutes();
       vm.task.location = vm.movie.theater.address;
+    }
+
+    if (!$routeParams.taskId) {
+      vm.task.sequenceNumber = lastTask && lastTask.hasOwnProperty(sequenceNumber) ? lastTask.sequenceNumber + 1 : 0;
     }
 
     Model = $routeParams.taskId ? vm.task.$update(params) : vm.task.$save(params);
