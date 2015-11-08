@@ -21,8 +21,8 @@
     <p ng-if="!vm.agenda.tasks.length" class="no-content-message centered">Add tasks to your plan by <nobr>pressing the <span class="glyphicon glyphicon-plus"></span><span class="sr-only">plus</span> button above.</nobr></p>
     <ul class="card-list agenda-plan">
         <li ng-repeat="task in vm.agenda.tasks">
-            <div ng-if="task.travelDurationPx > 0" class="task-travel" style="height:{{task.travelDurationPx}}px}"></div>
-            <a href="#" ng-if="!task.endOfDay" ng-click="vm.editTask($event, task._id)" class="card task-card" style="height:{{task.durationPx}}px}">
+            <div ng-if="task.travelDurationPx > 0" class="task-travel" style="height:{{task.travelDurationPx}}px"></div>
+            <a href="#" ng-if="!task.endOfDay" ng-click="vm.editTask($event, task._id)" class="card task-card" style="height:{{task.durationPx}}px">
                 <div class="task-content">
                     <div>{{task.description}}</div>
                 </div>
