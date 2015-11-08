@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
+  sequenceNumber: Number,
   description: {type: String, default: ''},
   type: {type: String, default: ''},
   duration: {type: Number},
-  travelTime: {type: Number}
   location: {type: String, default: ''}
 });
 

@@ -7,7 +7,6 @@ const agendaSchema = new Schema({
     description: {type: String, default: ''},
     date: {type: Date},
     startTime: {type: Date, default: ''},
-    endTime: {type: Date, default: ''},
     startAddress: {type: String, default: ''},
     endAddress: {type: String, default: ''},
     tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}]
