@@ -10,7 +10,7 @@ const planController = require('../controllers/planController');
 router.route('/movies').get(moviesController.getTheaters);
 router.route('/places').get(placesController.getPlaces);
 router.route('/location').get(locationController.getLocationDetails);
-router.route('/travel-time').get(locationController.getTravelTime);
+router.route('/travel-time').get(locationController.getTravelTimeReqHandler);
 router.route('/plan/:agendaId').get(planController.planDay);
 
 router.use(authController.ensureAuthenticated);

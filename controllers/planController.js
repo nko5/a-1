@@ -2,19 +2,18 @@
 
 var Agenda = require('../models/agenda');
 var _ = require('lodash');
+var locationController = require('./locationController');
 
-function getStartingLocation(agendaDoc) {
-  agendaDoc.tasks.forEach(function(task) {
-    if (task.sequenceNumber === 1) {
-      return agendaDoc.startAddress;
-    } else {
-      // find prior task
-      var priorTask = _.find(agendaDoc.tasks, {
-        sequenceNumber: task.sequenceNumber - 1
-      });
-      return priorTask.location;
-    }
-  });
+function getStartingLocation(agendaDoc, currentTask) {
+  if (currentTask.sequenceNumber === 0) {
+    return agendaDoc.startAddress;
+  } else {
+    // find prior task
+    var priorTask = _.find(agendaDoc.tasks, {
+      sequenceNumber: currentTask.sequenceNumber - 1
+    });
+    return priorTask.location;
+  }
 }
 
 module.exports.planDay = function(req, res) {
@@ -27,9 +26,25 @@ module.exports.planDay = function(req, res) {
 
       var agendaDoc = doc.toObject();
 
-      var startLocation = getStartingLocation(agendaDoc);
+      var promises = [];
 
-      res.json(agendaDoc);
+      agendaDoc.tasks.forEach(function(task) {
+        var startLocation = getStartingLocation(agendaDoc, task);
+        var endLocation = task.location;
+
+        promises.push(new Promise(function(resolve, reject) {
+          locationController.getTravelTime(startLocation, endLocation, function(err, duration) {
+            if (err) return reject(err);
+            task.travelDuration = duration.minutes;
+            return resolve(task);
+          });
+        }));
+      });
+
+      Promise.all(promises).then(function(values) {
+        agendaDoc.tasks = values;
+        res.json(agendaDoc);
+      });
     });
 
   // agenda -> start time, location of my days
