@@ -4,6 +4,7 @@ import agendasModule from './agendas/agendas.module.js';
 import tasksModule from './tasks/tasks.module.js';
 import headerModule from './header/header.module.js';
 import startupModule from './startup/startup.module.js';
+import locationModule from './location/location.module.js';
 import 'angular/bower-angular-resource';
 import 'angular-route';
 import 'arunisrael/angularjs-geolocation';
@@ -17,6 +18,7 @@ angular.module('app', [
     headerModule.name,
     agendasModule.name,
     tasksModule.name,
+    locationModule.name,
     'ngResource',
     'ngRoute',
     'geolocation',

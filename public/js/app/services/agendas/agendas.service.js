@@ -1,64 +1,35 @@
+import _ from 'lodash';
+
 export default AgendasServiceFactory;
 
-function AgendasServiceFactory($http, $timeout) {
+const MINUTE_PX = 1;
 
-    let service =  {
-        fetch: fetch
+function AgendasServiceFactory($resource) {
+    var service = {
+        get: get
+    };
+
+    var resource = $resource('api/agendas/:id', {id: '@_id'},
+        {
+            'update': {method: 'PUT'},
+            'get': {method: 'GET', isArray: false}
+        });
+
+    function get(id) {
+        return resource.get({id: id}).$promise.then(function(agenda) {
+            return decorateTasks(agenda);
+        });
     }
-    let oneday = 24 * 60 * 60 * 1000;
-    let now = new Date().getTime();
 
-    var tasks = [{
-        id: 1,
-        startTime: new Date(0,0,0,9,0,0),
-        description: "Task 1",
-        durationHours: 1.5
-    },{
-        id: 2,
-        startTime: new Date(0,0,0,10,30,0),
-        description: "Task 1",
-        durationHours: 1
-    },{
-        id: 3,
-        startTime: new Date(0,0,0,12,0,0),
-        description: "Task 1",
-        durationHours: .5
-    },{
-        id: 4,
-        startTime: new Date(0,0,0,13,0,0),
-        description: "Task 1",
-        durationHours: 2
-    }];
+    function decorateTasks(agenda) {
+        agenda.date = new Date(agenda.date);
 
-    var agendas = [{
-        id: 1,
-        date: new Date(now),
-        tasks: tasks
-    },{
-        id: 2,
-        date: new Date(now + oneday),
-        tasks, tasks
-    },{
-        id: 3,
-        date: new Date(now + (oneday*3)),
-        tasks: tasks
-    }];
+        _.each(agenda.tasks, function(task){
+            task.durationPx = Math.round((task.duration || 30) * MINUTE_PX);
+            task.traveleDurationPx = Math.round((task.travelDuration || 30) * MINUTE_PX);
+        });
 
-    function fetch(id) {
-        return $timeout(function(){
-            if (id) {
-                for(var i=0; i<agendas.length; i++) {
-                    if (id == agendas[i].id) {
-                        return agendas[i];
-                    }
-                }
-                return null;
-            }
-            else {
-                return agendas;
-            }
-        }, 300);
-
+        return agenda;
     }
 
     return service;

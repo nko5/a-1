@@ -1,15 +1,12 @@
-export default function($location, $route, $routeParams, Agenda, Task) {
+export default function($location, $route, $routeParams, AgendaService, Task) {
   var vm = this;
 
   init();
 
   function init() {
     if ($routeParams.agendaId) {
-      Agenda.get({
-        id: $routeParams.agendaId
-      }).$promise.then(function(agenda) {
+      AgendaService.get($routeParams.agendaId).then(function(agenda) {
         vm.agenda = agenda;
-        vm.agenda.date = new Date(vm.agenda.date);
       });
     } else {
       vm.agenda = {};

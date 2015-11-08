@@ -1,6 +1,13 @@
 <div id="locationSearchPanel">
-    <ui-gmap-search-box
-            template=''
-            parentdiv="'locationSearchPanel'">
-    </ui-gmap-search-box>
+    <form>
+        <div class="form-group">
+            <label for="keywords">Search for</label>
+            <input type="text" id="keywords" class="form-control" ng-model="vm.keywords"/>
+        </div>
+        <div>
+            <ul>
+                <li>results here</li>
+            </ul>
+        </div>
+    </form>
 </div>

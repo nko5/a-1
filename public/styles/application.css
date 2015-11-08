@@ -6542,7 +6542,7 @@ body {
   height: 100%;
 }
 body {
-  font-family: Helvetica Neue, Helvetica, Arial;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 1em;
   background-color: #025D8C;
 }
@@ -6632,13 +6632,19 @@ p {
   padding-right: 0;
 }
 .main-content-panel {
-  max-width: 480px;
   padding: 20px;
-  margin: 10px auto 20px;
+  margin: 10px 10px 20px;
   background-color: rgba(255, 255, 255, 0.9);
   border: solid 3px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.3);
+}
+@media only screen and (min-width: 500px) {
+  .main-content-panel {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .card,
 .card-thick-border {
@@ -6705,4 +6711,30 @@ p {
   margin: 40px 0;
   color: #777777;
   font-size: 1.333333em;
+}
+.task-card {
+  padding-top: 0;
+  padding-bottom: 0;
+  position: relative;
+  font-size: .85em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.task-card .task-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.task-travel {
+  background-color: rgba(255, 153, 0, 0.5);
+  margin: 0 20px;
+  min-height: 10px;
+}
+.agenda-start,
+.agenda-end {
+  height: 5px;
+  background-color: #003E5F;
+}
+.agenda-start {
+  margin-top: -5px;
 }

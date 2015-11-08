@@ -15,15 +15,25 @@
         </a>
     </div>
 
+    <div class="agenda-start">
+        <span class="sr-only">Start of the day</span>
+    </div>
     <p ng-if="!vm.agenda.tasks.length" class="no-content-message centered">Add tasks to your plan by <nobr>pressing the <span class="glyphicon glyphicon-plus"></span><span class="sr-only">plus</span> button above.</nobr></p>
     <ul class="card-list">
         <li ng-repeat="task in vm.agenda.tasks">
             <div class="card">
-                <h3>{{task.description}}</h3>
-                <p>Duration: {{task.duration}} mins</p>
-                <a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>
-                <a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>
+            <div class="task-travel" style="height:{{task.traveleDurationPx}}px}"></div>
+            <div class="card task-card" style="height:{{task.durationPx}}px}">
+                <div class="task-content">
+                    <div>{{task.description}}</div>
+                </div>
+                <!--<a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>-->
+                <!--<a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>-->
             </div>
         </li>
     </ul>
+    <div class="agenda-end">
+        <span class="sr-only">End of the day</span>
+    </div>
+
 </div>

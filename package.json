@@ -30,7 +30,6 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
-      "angular-google-maps": "npm:angular-google-maps@^2.2.1",
       "angular-route": "github:angular/bower-angular-route@^1.4.7",
       "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@^0.14.3",
       "angular/bower-angular-resource": "github:angular/bower-angular-resource@^1.4.7",

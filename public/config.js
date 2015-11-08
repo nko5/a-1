@@ -15,7 +15,6 @@ System.config({
 
   map: {
     "angular": "github:angular/bower-angular@1.4.7",
-    "angular-google-maps": "npm:angular-google-maps@2.2.1",
     "angular-route": "github:angular/bower-angular-route@1.4.7",
     "angular-ui/bootstrap-bower": "github:angular-ui/bootstrap-bower@0.14.3",
     "angular/bower-angular-resource": "github:angular/bower-angular-resource@1.4.7",
@@ -43,19 +42,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "npm:angular-google-maps@2.2.1": {
-      "angular": "npm:angular@1.4.7",
-      "angular-simple-logger": "npm:angular-simple-logger@0.0.4",
-      "lodash": "npm:lodash@3.10.1",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular-simple-logger@0.0.4": {
-      "angular": "npm:angular@1.4.7",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular@1.4.7": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
