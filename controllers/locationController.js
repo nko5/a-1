@@ -1,11 +1,14 @@
 "use strict";
 var request = require('request');
 var _ = require('lodash');
+var querystring = require('querystring');
 
 module.exports.getLocationDetails = function(req, res) {
   let lat = req.query.lat;
   let long = req.query.long;
-  var url = encodeURI(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${process.env.GOOGLE_API_KEY}`);
+  var qs = querystring.stringify({ latlng: `${lat},${long}`, key: process.env.GOOGLE_API_KEY})
+
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?' + qs;
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
@@ -27,7 +30,12 @@ module.exports.getTravelTimeReqHandler = function(req, res) {
 };
 
 function getTravelTime(origin, destination, cb) {
-  var url = encodeURI(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&mode=driving&language=en-US&key=${process.env.GOOGLE_API_KEY}`);
+  var qs = querystring.stringify({ origins: origin,
+    destinations: destination,
+    key: process.env.GOOGLE_API_KEY});
+
+  var url = 'https://maps.googleapis.com/maps/api/distancematrix/json?' + qs;
+  console.log(qs);
   request.get(url, {
     json: true
   }, function(err, response, responseBody) {
