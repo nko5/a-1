@@ -48,7 +48,7 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
     }
 
     if (!$routeParams.taskId) {
-      vm.task.sequenceNumber = lastTask && lastTask.hasOwnProperty(sequenceNumber) ? lastTask.sequenceNumber + 1 : 0;
+      vm.task.sequenceNumber = lastTask && lastTask.hasOwnProperty('sequenceNumber') ? lastTask.sequenceNumber + 1 : 0;
     }
 
     Model = $routeParams.taskId ? vm.task.$update(params) : vm.task.$save(params);
