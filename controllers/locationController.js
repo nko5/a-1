@@ -65,7 +65,7 @@ function getTravelTime(origin, destination, cb) {
 
     return cb(null, {
       duration: {
-        minutes: getDurationValue(responseBody)
+        minutes: getDurationValue(responseBody) / 60
       }
     });
   });
