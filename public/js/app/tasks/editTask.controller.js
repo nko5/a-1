@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default function($location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
+export default function($scope, $location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
   var vm = this;
 
   init();
