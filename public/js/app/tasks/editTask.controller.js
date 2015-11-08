@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default function($location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
+export default function($location, $routeParams, $scope, $http, Task, geolocation, locationService, AgendaService) {
   var vm = this;
 
   init();
@@ -48,7 +48,7 @@ export default function($location, $routeParams, $http, Task, geolocation, locat
     }
 
     if (!$routeParams.taskId) {
-      vm.task.sequenceNumber = lastTask && lastTask.hasOwnProperty(sequenceNumber) ? lastTask.sequenceNumber + 1 : 0;
+      vm.task.sequenceNumber = lastTask && lastTask.hasOwnProperty('sequenceNumber') ? lastTask.sequenceNumber + 1 : 0;
     }
 
     Model = $routeParams.taskId ? vm.task.$update(params) : vm.task.$save(params);
