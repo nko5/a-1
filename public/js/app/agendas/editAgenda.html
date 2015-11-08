@@ -13,21 +13,9 @@
         </div>
         <div class="form-group">
             <label for="agendaStartTime">When will you start your day?</label>
-            <select id="agendaStartTime" ng-model="vm.agenda.startTime" class="form-control" >
-                <option value="0700">7:00AM</option>
-                <option value="0730">7:30AM</option>
-                <option value="0800">8:00AM</option>
-                <option value="0830">8:30AM</option>
-                <option value="0900">9:00AM</option>
-                <option value="0930">9:30AM</option>
-                <option value="1000">10:00AM</option>
-                <option value="1030">10:30AM</option>
-                <option value="1100">11:00AM</option>
-                <option value="1130">11:30AM</option>
-                <option value="1200">12:00PM</option>
-            </select>
+            <select id="agendaStartTime" class="form-control" ng-model="vm.agenda.startTime" ng-options="key as value for (key , value) in vm.getStartTimes()"></select>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="agendaEndTime">When will you end your day?</label>
             <select id="agendaEndTime" ng-model="vm.agenda.endTime" class="form-control" >
                 <option value="1200">12:00PM</option>
@@ -45,16 +33,16 @@
                 <option value="1800">6:00PM</option>
                 <option value="1830">6:30PM</option>
             </select>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="startFromAddress">Starting from</label>
-            <input id="startFromAddress" class="form-control" type="text" ng-model="vm.agenda.startAddress"/>
+            <input id="startFromAddress" ng-autocomplete="startAddress" class="form-control" type="text" ng-model="vm.agenda.startAddress"/>
         </div>
 
         <div class="form-group">
             <label for="endAtAddress">Ending at</label>
-            <input id="endAtAddress" class="form-control" ng-model="vm.agenda.endAddress" type="text"/>
+            <input id="endAtAddress" ng-autocomplete="endAddress" class="form-control" ng-model="vm.agenda.endAddress" type="text"/>
         </div>
 
         <button class="btn btn-primary" type="submit">Start Planning</button>
