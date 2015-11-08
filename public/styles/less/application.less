@@ -239,10 +239,24 @@ p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    left:20px;
+    right:20px;
+    line-height: normal;
   }
 
-  a {
-    color: inherit;
+  .description2 {
+    color: @text-color;
+    font-size:.85em;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  &.short-duration {
+    .description2 {
+      display: none;
+    }
   }
 }
 

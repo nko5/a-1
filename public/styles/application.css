@@ -6727,9 +6727,20 @@ p {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  left: 20px;
+  right: 20px;
+  line-height: normal;
 }
-.task-card a {
-  color: inherit;
+.task-card .description2 {
+  color: #333333;
+  font-size: .85em;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.task-card.short-duration .description2 {
+  display: none;
 }
 .task-travel {
   background-color: rgba(255, 153, 0, 0.5);
