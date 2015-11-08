@@ -19,11 +19,24 @@ function getTravelDuration(startLocation, endLocation, currentTask) {
       if (err) {
         return reject(err)
       };
-
       currentTask.travelDuration = duration.duration.minutes;
       return resolve(currentTask);
     });
   })
+}
+
+function getReturnTask(agendaDoc) {
+
+  var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
+
+  var travelToEndTask = {
+    sequenceNumber: agendaDoc.tasks.length,
+    description: "Travel to end address",
+    duration: 0,
+    location: agendaDoc.endAddress
+  };
+
+  return getTravelDuration(lastTask.location, travelToEndTask.location, travelToEndTask);
 }
 
 module.exports.planDay = function(req, res) {
@@ -51,24 +64,17 @@ module.exports.planDay = function(req, res) {
         }
 
         if (agendaDoc.endAddress !== "") {
-          var lastTask = agendaDoc.tasks[agendaDoc.tasks.length - 1];
-
-          var travelToEndTask = {
-            sequenceNumber: agendaDoc.tasks.length,
-            description: "Travel to end address",
-            duration: 0,
-            location: agendaDoc.endAddress
-          };
-
-          promises.push(getTravelDuration(lastTask.location, travelToEndTask.location, travelToEndTask));
+          promises.push(getReturnTask(agendaDoc));
         }
 
         Promise.all(promises).then(function(values) {
           agendaDoc.tasks = values;
           return res.json(agendaDoc);
         });
+      } else {
+        return res.json(agendaDoc);
       }
 
-      return res.json(agendaDoc);
+
     });
 }
