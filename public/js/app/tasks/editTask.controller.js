@@ -3,32 +3,6 @@ import _ from 'lodash';
 export default function($scope, $location, $routeParams, $http, Task, geolocation, locationService, AgendaService) {
   var vm = this;
 
-  populateStartAddressFromGeolocation();
-
-  init();
-
-
-  function init() {
-    let isEdit = !!$routeParams.taskId;
-    if (isEdit) {
-      Task.get({
-        agendaId: $routeParams.agendaId,
-        id: $routeParams.taskId
-      }).$promise.then(function(task) {
-        vm.task = task;
-        vm.task.duration = ''+vm.task.duration;
-      });
-    } else {
-      vm.task = new Task();
-    }
-
-
-
-    vm.title = isEdit ? "Change Task" : "Add Task";
-    vm.cancelTo = "#/agendas/"+ $routeParams.agendaId;
-
-  }
-
   vm.createTask = function() {
     let Model;
     let agenda = AgendaService.currentAgenda();
@@ -90,6 +64,13 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
   };
 
   vm.updateType = function() {
+      if(!vm.task) {
+        return;
+      }
+
+      if(!vm.task.type) {
+        vm.task.type = 'running';
+      }
 
       if(vm.task.type === 'movie') {
         vm.getTheaters();
@@ -167,11 +148,31 @@ export default function($scope, $location, $routeParams, $http, Task, geolocatio
             return _.includes(locationResult.types, "street_address");
           }).formatted_address;
           vm.address = address;
+          vm.updateType();
       });
     });
   }
 
+  function init() {
+    let isEdit = !!$routeParams.taskId;
+    if (isEdit) {
+      Task.get({
+        agendaId: $routeParams.agendaId,
+        id: $routeParams.taskId
+      }).$promise.then(function(task) {
+        vm.task = task;
+        vm.task.duration = ''+vm.task.duration;
+      });
+    } else {
+      vm.task = new Task();
+    }
 
+    vm.title = isEdit ? "Change Task" : "Add Task";
+    vm.cancelTo = "/#/agendas/"+ $routeParams.agendaId;
 
+  }
 
+  init();
+
+  populateStartAddressFromGeolocation();
 }
