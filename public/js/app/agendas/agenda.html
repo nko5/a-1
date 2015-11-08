@@ -22,13 +22,13 @@
     <ul class="card-list agenda-plan">
         <li ng-repeat="task in vm.agenda.tasks">
             <div ng-if="task.travelDurationPx > 0" class="task-travel" style="height:{{task.travelDurationPx}}px}"></div>
-            <div ng-if="!task.endOfDay" class="card task-card" style="height:{{task.durationPx}}px}">
+            <a href="#" ng-if="!task.endOfDay" ng-click="vm.editTask($event, task._id)" class="card task-card" style="height:{{task.durationPx}}px}">
                 <div class="task-content">
                     <div>{{task.description}}</div>
                 </div>
-                <a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>
-                <a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>
-            </div>
+                <!--<a href="#" ng-click="vm.editTask($event, task._id)" >Edit</a>-->
+                <!--<a href="#" ng-click="vm.removeTask($event, task._id)" >Remove</a>-->
+            </a>
         </li>
     </ul>
     <div class="agenda-end">

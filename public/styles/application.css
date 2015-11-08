@@ -6728,6 +6728,9 @@ p {
   top: 50%;
   transform: translateY(-50%);
 }
+.task-card a {
+  color: inherit;
+}
 .task-travel {
   background-color: rgba(255, 153, 0, 0.5);
   margin: 0 20px;
